@@ -1,0 +1,330 @@
+.theme {
+  background-color: var(--color-secondary);
+}
+
+.flex {
+  display: flex;
+  /*  height: 30rem; */
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+  /*   background-color: var(--color-bg); */
+  flex-wrap: wrap;
+  gap: 0.5%;
+  border: var(--color-border) dashed 1px;
+}
+.item {
+  width: 33%;
+  aspect-ratio: 1 / 1;
+  border: var(--color-border) dashed 1px;
+  background-color: var(--color-primary);
+}
+
+.BFC1 {
+  margin-top: 0.1rem;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  width: 100%;
+  border: black dashed 1px;
+}
+
+.left {
+  float: left;
+  background-color: var(--color-primary);
+  height: 10rem;
+  aspect-ratio: 1 / 1;
+}
+.right {
+  float: right;
+  background-color: var(--color-primary);
+  height: 10rem;
+  aspect-ratio: 1 / 1;
+}
+
+.BFC2 {
+  overflow: hidden; /* 或者使用 display: flow-root */
+  border: var(--color-border) dashed 1px;
+}
+
+.box1 {
+  height: 5rem;
+  background-color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.box2 {
+  height: 5rem;
+  background-color: var(--color-primary);
+  margin-top: 1rem;
+}
+
+.BFC3 {
+  border: var(--color-border) dashed 1px;
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+.btn {
+  height: 30px;
+  background-color: var(--color-primary);
+}
+
+.BFC4 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: flex-start;
+  gap: 2px;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: var(--color-bg);
+  height: 220px;
+  border: 1px var(--color-border) dashed;
+}
+
+.fruit {
+  background-color: var(--color-primary);
+  width: 19%;
+  height: 100px;
+}
+.BFC5 {
+  display: flex;
+  align-items: flex-start;
+  height: 200px;
+  background-color: var(--color-bg);
+  border: var(--color-border) dashed 1px;
+}
+.fix-left {
+  width: 20%;
+  height: 100%;
+  background-color: var(--color-primary);
+}
+
+.auto-adapt {
+  height: 100%;
+  flex-grow: 1;
+  background-color: var(--color-secondary);
+}
+
+.BFC6 {
+  background-color: var(--color-bg);
+  border: var(--color-border) dashed 1px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.right-float {
+  float: right;
+  height: 200px;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+  width: 200px;
+}
+
+.auto-left {
+  overflow: hidden;
+  background-color: var(--color-secondary);
+  height: 200px;
+}
+
+.BFC7 {
+  background-color: bisque;
+  border: var(--color-border) dashed 1px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.left-float {
+  float: left;
+  height: 200px;
+  width: 150px;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+}
+
+.auto-right {
+  overflow: hidden;
+  background-color: var(--color-secondary);
+  height: 200px;
+}
+
+.BFC8 {
+  background-color: var(--color-bg);
+  overflow: hidden;
+  border: var(--color-border) dashed 1px;
+}
+
+.left2 {
+  float: left;
+  height: 200px;
+  width: 150px;
+  background-color: var(--color-primary);
+}
+
+.right2 {
+  float: right;
+  height: 200px;
+  width: 150px;
+  background-color: var(--color-primary);
+}
+
+.middle {
+  margin-left: 150px;
+  margin-right: 150px;
+  height: 200px;
+  background-color: var(--color-secondary);
+}
+
+.BFC9 {
+  background-color: var(--color-bg);
+  display: flex;
+  border: var(--color-bg) dashed 1px;
+}
+
+.item-left {
+  background-color: var(--color-primary);
+  height: 200px;
+  width: 150px;
+}
+.item-middle {
+  background-color: var(--color-bg);
+  height: 200px;
+  flex-grow: 1;
+}
+.item-right {
+  background-color: var(--color-primary);
+  height: 200px;
+  width: 150px;
+}
+
+.BFC10 {
+  background-color: var(--color-bg);
+  overflow: hidden;
+  border: var(--color-border) dashed 1px;
+}
+
+.float3 {
+  float: left;
+  height: 150px;
+  width: 150px;
+  background-color: var(--color-primary);
+}
+.right3 {
+  height: 200px;
+  background-color: var(--color-secondary);
+}
+
+.BFC11 {
+  background-color: var(--color-bg);
+  overflow: hidden;
+  position: relative;
+  border: black dashed 1px;
+}
+
+.float4 {
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  background-color: var(--color-primary);
+}
+.right4 {
+  height: 200px;
+  background-color: var(--color-secondary);
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  /*   padding: 1rem; */
+  justify-content: center;
+}
+
+.card {
+  background-color: var(--color-primary);
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  flex: 1 1 calc(33.333% - 2rem); /* 三列 */
+  box-sizing: border-box;
+  min-width: 250px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 100%; /* 移动端单列堆叠 */
+  }
+}
+
+.grid-box {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.grid-box img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .grid-box {
+    grid-template-columns: 1fr; /* 一列堆叠 */
+  }
+}
+
+.BFC {
+  background-color: var(--color-bg);
+  display: "flow-root";
+  border: var(--color-border) dashed 1px;
+}
+
+.BFC12 {
+  display: flex;
+  background-color: var(--color-bg);
+  justify-content: center;
+  align-content: center;
+  border: 1px dashed var(--color-border);
+
+  @mixin switch-theme($width) {
+    .theme-container {
+      width: $width;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      .light,
+      .dark,
+      .blue {
+        border-radius: 50%;
+        width: 4rem;
+        aspect-ratio: 1/1;
+      }
+      .light {
+        background-color: #e9ecef;
+      }
+
+      .dark {
+        background-color: #495057;
+      }
+
+      .blue {
+        background-color: #00b4d8;
+      }
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    @include switch-theme(80%);
+  }
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    @include switch-theme(50%);
+  }
+  @media screen and (min-width: 992px) {
+    @include switch-theme(33%);
+  }
+}
+
