@@ -1,0 +1,88 @@
+.navContainer {
+  position: relative;
+  font-family: sans-serif;
+  width: 30%;
+  .navTitle {
+    padding: 0.5rem 1rem;
+    background: var(--color-bg);
+    border: 0.1rem solid #ddd;
+    cursor: pointer;
+    user-select: none;
+    .headerArrow {
+      transition: transform 0.3s;
+    }
+    .arrowUp {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 50rem;
+    background: var(--color-bg);
+    box-shadow: var(--box-shadow-md);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    animation: fadeIn 0.2s ease-in-out;
+    z-index: 10;
+
+    .dropdownGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      background-color: var(--color-primary);
+      .dropdownItem {
+        text-align: center;
+        font-size: 1rem;
+        transition: transform 0.2s;
+      }
+    }
+  }
+}
+
+.dropdownItem img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.dropdownItem:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ✅ 响应式样式 */
+@media (max-width: 767px) {
+  .navContainer {
+    width: 50%;
+  }
+  .dropdown {
+    position: static;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+  }
+
+  .dropdownGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .dropdownItem img {
+    width: 36px;
+    height: 36px;
+  }
+}

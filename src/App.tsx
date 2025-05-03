@@ -12,6 +12,7 @@ import Masonry from "./Cards/Masonry";
 import Masonry2 from "./Cards2/Masonry2";
 import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
+import NavBar from "./NavBar/NavBar";
 
 // 防抖函数：n秒后执行，如果n秒内又触发，则重新计时
 function debounce(fn, delay) {
@@ -430,7 +431,7 @@ const ScreenshotDemo = () => {
       <div className="BFC">
         <Masonry2 />
       </div>
-      <div className="theme">鼠标移进图标，图标抖动</div>
+      <div className="theme">bilibili鼠标移进图标，图标抖动</div>
       <div className="BFC">
         <div
           style={{
@@ -508,11 +509,9 @@ const ScreenshotDemo = () => {
           </svg>
         </div>
       </div>
-      <div className="theme">未读信息</div>
+      <div className="theme">bilibili未读信息</div>
       <div className="BFC">
-        <div
-          className="message-outside"
-        >
+        <div className="message-outside">
           <div className="red-num-message">18</div>
           <svg
             width="20"
@@ -532,6 +531,11 @@ const ScreenshotDemo = () => {
             ></path>
           </svg>
         </div>
+      </div>
+      <div className="theme">bilibili鼠标移入，显示下拉的grid</div>
+      <div className="BFC">
+        <NavBar />
+        <div className="place"></div>
       </div>
     </>
   );
