@@ -13,6 +13,8 @@ import Masonry2 from "./Cards2/Masonry2";
 import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
 import NavBar from "./NavBar/NavBar";
+import html2canvas from "html2canvas";
+import domtoimage from "dom-to-image";
 
 // 防抖函数：n秒后执行，如果n秒内又触发，则重新计时
 function debounce(fn, delay) {
@@ -91,6 +93,25 @@ const useUserGuide = (initialValue) => {
   }, [firstVisit]);
 
   return [setFirst];
+};
+
+const capture1 = () => {
+  html2canvas(document.getElementById("root")).then(function (canvas) {
+    // 将 canvas 转成图片并下载
+    const link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    link.download = "screenshot.png";
+    link.click();
+  });
+};
+
+const capture2 = () => {
+  domtoimage.toPng(document.getElementById("root")).then(function (dataUrl) {
+    const link = document.createElement("a");
+    link.download = "screenshot.png";
+    link.href = dataUrl;
+    link.click();
+  });
 };
 
 const ScreenshotDemo = () => {
@@ -536,6 +557,15 @@ const ScreenshotDemo = () => {
       <div className="BFC">
         <NavBar />
         <div className="place"></div>
+      </div>
+      <div className="theme">canvas实现屏幕截图</div>
+      <div className="BFC">
+        <button className="btn" onClick={capture1}>
+          截图整个网页(html2canvas，图片跨域截不出来)
+        </button>
+        <button className="btn" onClick={capture2}>
+          截图整个网页(dom-to-image)
+        </button>
       </div>
     </>
   );
