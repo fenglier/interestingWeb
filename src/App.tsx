@@ -15,6 +15,10 @@ import "driver.js/dist/driver.css";
 import NavBar from "./NavBar/NavBar";
 import html2canvas from "html2canvas";
 import domtoimage from "dom-to-image";
+import Carousel from "./Carousel";
+import img1 from "./assets/1.jpg";
+import img2 from "./assets/2.jpg";
+import img3 from "./assets/3.jpg";
 
 // 防抖函数：n秒后执行，如果n秒内又触发，则重新计时
 function debounce(fn, delay) {
@@ -114,7 +118,16 @@ const capture2 = () => {
   });
 };
 
+const useAnimation = (initialValue) => {
+  const [show, setShow] = useState(initialValue);
+  const toggle = () => {
+    setShow(!show);
+  };
+  return [show, toggle];
+};
+
 const ScreenshotDemo = () => {
+  const [show, toggle] = useAnimation(true);
   const [setFirstVisit] = useUserGuide(false);
   // 用 useCallback 包一层，防止每次渲染重新生成
   const debounceClick = useCallback(debounce(handleClickDebounce, 2000), []);
@@ -182,7 +195,7 @@ const ScreenshotDemo = () => {
 
   useEffect(() => {
     // 页面渲染完成后执行
-    inputRef.current.focus(); // 调用DOM元素的focus方法
+    //inputRef.current.focus(); // 调用DOM元素的focus方法
   }, []); // 空依赖数组，表示组件挂载完成后执行一次
 
   return (
@@ -566,6 +579,70 @@ const ScreenshotDemo = () => {
         <button className="btn" onClick={capture2}>
           截图整个网页(dom-to-image)
         </button>
+      </div>
+      <div className="theme">渐入渐出（transition）</div>
+      <div className="BFC">
+        <div id="target" className={show ? "box fade show" : "box fade"}>
+          Hello
+        </div>
+        <button onClick={toggle}>切换渐入渐出</button>
+      </div>
+      <div className="theme">按钮反馈（:active )，点击时缩小 + 阴影内凹</div>
+      <div
+        className="BFC"
+        style={{
+          display: "flex",
+          width: "100%",
+          height: "5rem",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <button className="btn2">点击我</button>
+      </div>
+      <div className="theme">
+        CSS 实现 Loading 动画（转圈），使用到的关键属性有
+        border-top、border-radius: 50%; animation
+      </div>
+      <div
+        className="BFC"
+        style={{
+          display: "flex",
+          width: "100%",
+          height: "5rem",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div className="loader"></div>
+      </div>
+      <div className="theme">
+        轮播图的实现：transform: translateX() + JS 控制索引切换
+      </div>
+      <div
+        className="BFC"
+        style={{
+          display: "flex",
+          width: "100%",
+          height: "20rem",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Carousel>
+          <img
+            src={img1}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+          <img
+            src={img2}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+          <img
+            src={img3}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+        </Carousel>
       </div>
     </>
   );
