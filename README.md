@@ -1,6 +1,6 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+使用react+react-router-dom+vite+dumi实现了，有趣的web前端布局、组件
+
 
 Currently, two official plugins are available:
 

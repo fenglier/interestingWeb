@@ -12,17 +12,20 @@ import style from "./index.module.scss";
 // src/pages/About.tsx
 const Mode = () => {
   const [mode, setMode] = useState("light");
+  const toggleMode = () => {
+    startTransition(() => {
+      setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+    });
+    localStorage.setItem("theme", mode === "light" ? "dark" : "light");
+  };
   useEffect(() => {
-    document.body.setAttribute("data-theme", mode);
+    let theme = localStorage.getItem("theme") || "light";
+    document.body.setAttribute("data-theme", theme);
   }, [mode]);
   return (
     <>
       {mode === "light" ? (
-        <button
-          type="button"
-          className={style.btn}
-          onClick={() => setMode("dark")}
-        >
+        <button type="button" className={style.btn} onClick={toggleMode}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="28"
@@ -46,7 +49,7 @@ const Mode = () => {
         <button
           type="button"
           aria-label="Use Light Mode"
-          onClick={() => setMode("light")}
+          onClick={toggleMode}
           className={style.btn}
         >
           <svg

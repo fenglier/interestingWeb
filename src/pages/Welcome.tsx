@@ -15,10 +15,7 @@ import "driver.js/dist/driver.css";
 import NavBar from "../components/NavBar/NavBar";
 import html2canvas from "html2canvas";
 import domtoimage from "dom-to-image";
-import Carousel from "../components/Carousel";
-import img1 from "../assets/1.jpg";
-import img2 from "../assets/2.jpg";
-import img3 from "../assets/3.jpg";
+
 
 // 防抖函数：n秒后执行，如果n秒内又触发，则重新计时
 function debounce(fn, delay) {
@@ -409,6 +406,7 @@ const ScreenshotDemo = () => {
           总的来说，我具备扎实的编程基础，同时也有跨学科的背景，能从用户角度去理解前端开发的需求。我热爱前端，也希望能在这个领域持续成长。
         </div>
       </div>
+      
       <h2 className="theme">响应式布局卡片列表（Flex）</h2>
       <div className="card-container">
         <div className="card">卡片1</div>
@@ -606,34 +604,7 @@ const ScreenshotDemo = () => {
       >
         <div className="loader"></div>
       </div>
-      <div className="theme">
-        轮播图的实现：transform: translateX() + JS 控制索引切换
-      </div>
-      <div
-        className="BFC"
-        style={{
-          display: "flex",
-          width: "100%",
-          height: "20rem",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Carousel>
-          <img
-            src={img1}
-            style={{ height: "100%", width: "100%", objectFit: "cover" }}
-          />
-          <img
-            src={img2}
-            style={{ height: "100%", width: "100%", objectFit: "cover" }}
-          />
-          <img
-            src={img3}
-            style={{ height: "100%", width: "100%", objectFit: "cover" }}
-          />
-        </Carousel>
-      </div>
+  
     </>
   );
 };

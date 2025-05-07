@@ -47,11 +47,7 @@ const Layout = () => {
         ?.children?.map((child) => (
           <div
             key={child.path}
-            className={
-              location.pathname === child.path
-                ? "side-item active"
-                : "side-item"
-            }
+            className={`${style.sideItem} ${location.pathname === child.path ? style.active : ""}`}
             onClick={() => navigate(child.path)}
           >
             {child.name}

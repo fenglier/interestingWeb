@@ -3,38 +3,43 @@
  * @Description: 配置式路由
  * @Date: 2025-05-07 12:41:45
  * @lastEditors: fengli
- * @lastEditTime: 
+ * @lastEditTime:
  */
-import Welcome from './pages/Welcome';
-/* import Users from './pages/About';
-import Settings from './pages/Settings'; */
-import About from './pages/About';
+import Welcome from "./pages/Welcome";
+import CarouselDemo from "./pages/CarouselDemo";
+import WaterfallDemo from "./pages/WaterfallDemo";
 
- const routes = [
-    {
-        path: '/interestingWeb',
-        name: 'InterestingWeb',
-        key: 'interestingWeb',
-        children: [
-            {
-                path: '/interestingWeb/welcome',
-                name: 'Welcome',
-                element: <Welcome />,
-            },
-        ],
-    },
-    {
-        path: '/users',
-        name: 'Users',
-        key: 'users',
-        children: [
-            {
-                path: '/users/list',
-                name: 'User List',
-                element: <About />,
-            },
-        ],
-    }
+
+const routes = [
+  {
+    path: "/interestingWeb",
+    name: "InterestingWeb",
+    key: "interestingWeb",
+    children: [
+      {
+        path: "/interestingWeb/welcome",
+        name: "Welcome",
+        element: <Welcome />,
+      },
+    ],
+  },
+  {
+    path: "/components",
+    name: "组件",
+    key: "components",
+    children: [
+      {
+        path: "/components/carousel",
+        name: "轮播图",
+        element: <CarouselDemo />,
+      },
+      {
+        path: "/components/waterfall",
+        name: "瀑布流",
+        element: <WaterfallDemo />,
+      },
+    ],
+  },
 ];
 
 export default routes;
