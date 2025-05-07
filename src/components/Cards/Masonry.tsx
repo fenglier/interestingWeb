@@ -5,7 +5,7 @@ import Card from "./Card";
 import data1 from "./data1.json";
 import data2 from "./data2.json";
 import debounce from "lodash/debounce";
-import { rafThrottle } from "../tool";
+import { rafThrottle } from "../../tool";
 
 /* 只是使用data1和data2中的尺寸信息，图片用背景颜色替换 */
 

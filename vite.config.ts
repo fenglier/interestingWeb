@@ -12,5 +12,5 @@ import { ghPages } from "vite-plugin-gh-pages";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), ghPages()],
-  base: "/intererstingWeb/", // 非常重要！
+  base: "/", // 非常重要！
 });
