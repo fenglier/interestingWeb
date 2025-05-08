@@ -36,12 +36,11 @@ const Card = ({ card, top, left, height, width, title, author, like }) => {
             {/* <img src={avatar} alt="" /> */}
             <span className={styles.name}>{author}</span>
           </div>
-       {   <svg
-            width="16"
-            height="16"
-          >
-            <use data-v-55b36ac6="" href="#like"></use>
-          </svg>}
+          {
+            <svg width="16" height="16">
+              <use href="#like"></use>
+            </svg>
+          }
           <div className="like">{like}</div>
         </div>
       </div>

@@ -1,0 +1,11 @@
+.childPadding {
+  padding-left: 2rem;
+}
+
+.arrowDown {
+  transition: transform 0.3s;
+}
+.arrowRight {
+  transition: transform 0.3s;
+  transform: rotate(-90deg);
+}

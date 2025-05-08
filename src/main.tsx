@@ -8,17 +8,17 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.scss";
-import App2 from "./App.tsx";
+import App from "./App.tsx";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./layouts/Layout";
-import Home from "./pages/Home";
+import Home from "./pages/TreeDemo.tsx";
 import About from "./pages/About";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Router>
-      <App2 />
+      <App />
     </Router>
   </StrictMode>
 );

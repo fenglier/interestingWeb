@@ -22,8 +22,9 @@
     .default {
     }
     .active {
-      color: var(--color-primary);
+      color: var(--color-success);
     }
+
   }
 }
 
@@ -40,7 +41,7 @@
     padding-bottom: 0.5rem;
   }
   .active {
-    color: var(--color-primary);
+    color: var(--color-success);
   }
 }
 

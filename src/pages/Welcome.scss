@@ -1,5 +1,5 @@
 .theme {
-  background-color: var(--color-secondary);
+  background-color: var(--color-bg-secondary);
 }
 
 .flex {
@@ -17,26 +17,26 @@
   width: 33%;
   aspect-ratio: 1 / 1;
   border: var(--color-border) dashed 1px;
-  background-color: var(--color-primary);
+  background-color: var(--color-bg-primary);
 }
 
 .BFC1 {
   margin-top: 0.1rem;
   overflow: hidden;
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-secondary);
   width: 100%;
   border: black dashed 1px;
 }
 
 .left {
   float: left;
-  background-color: var(--color-primary);
+  background-color: var(--color-bg-secondary);
   height: 10rem;
   aspect-ratio: 1 / 1;
 }
 .right {
   float: right;
-  background-color: var(--color-primary);
+  background-color: var(--color-bg-secondary);
   height: 10rem;
   aspect-ratio: 1 / 1;
 }

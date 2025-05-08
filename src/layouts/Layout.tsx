@@ -24,35 +24,43 @@ const Layout = () => {
 
   const topNav = (
     <>
-      {routes.map((r) => (
-        <div
-          key={r.key}
-          className={`${style.default} ${
-            r.key === activeTop ? style.active : ""
-          }`}
-          onClick={() => {
-            setActiveTop(r.key);
-            navigate(r.children?.[0]?.path || r.path);
-          }}
-        >
-          {r.name}
-        </div>
-      ))}
+      {routes.map((r) => {
+        console.log(r.key);
+        return (
+          <div
+            key={r.key}
+            className={`${style.default} ${
+              r.key === activeTop ? style.active : ""
+            }`}
+            onClick={() => {
+              setActiveTop(r.key);
+              navigate(r.children?.[0]?.path || r.path);
+            }}
+          >
+            {r.name}
+          </div>
+        );
+      })}
     </>
   );
   const sideNav = (
     <>
       {routes
         .find((r) => r.key === activeTop)
-        ?.children?.map((child) => (
-          <div
-            key={child.path}
-            className={`${style.sideItem} ${location.pathname === child.path ? style.active : ""}`}
-            onClick={() => navigate(child.path)}
-          >
-            {child.name}
-          </div>
-        ))}
+        ?.children?.map((child) => {
+          console.log(child.path);
+          return (
+            <div
+              key={child.path}
+              className={`${style.sideItem} ${
+                location.pathname === child.path ? style.active : ""
+              }`}
+              onClick={() => navigate(child.path)}
+            >
+              {child.name}
+            </div>
+          );
+        })}
     </>
   );
   return (
@@ -63,6 +71,7 @@ const Layout = () => {
         <nav className={style.firstNav}>
           {/* TODO */}
           <span>search</span>
+          <span>gitHub</span>
           {topNav}
           {/* 夜间模式和白日模式 */}
           <Mode />
