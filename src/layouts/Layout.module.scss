@@ -10,6 +10,15 @@
   z-index: 1000;
   top: 0;
   box-shadow: var(--shadow-md);
+  .title {
+    cursor: pointer;
+    img {
+      width: 32px;
+      height: 32px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
   .ocuppy {
     flex-grow: 1;
   }
@@ -24,7 +33,20 @@
     .active {
       color: var(--color-success);
     }
-
+    .gitHub {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 9999px;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      &:hover {
+        background-color: var(--color-bg-hover);
+        box-shadow: var(--shadow-lg);
+        cursor: pointer;
+      }
+    }
   }
 }
 

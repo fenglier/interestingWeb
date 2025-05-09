@@ -28,8 +28,8 @@ const Mode = () => {
         <button type="button" className={style.btn} onClick={toggleMode}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="28"
-            height="28"
+            width="32"
+            height="32"
             viewBox="0 0 32 32"
           >
             <g fill="none" fill-rule="evenodd" transform="translate(-440 -200)">

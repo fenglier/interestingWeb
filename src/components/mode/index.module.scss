@@ -1,6 +1,14 @@
 .btn:hover {
-  background-color: rgba(246, 247, 249, 0.05);
+  background-color:var(--btn-hover-bg)
 }
 .btn {
   border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  color: var(--color-primary);
+  background-color: var(--color-bg);
 }

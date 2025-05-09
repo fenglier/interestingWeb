@@ -1,6 +1,6 @@
 // themes/_dark.scss
-[data-theme='dark'] {
-    /* ===== 颜色 Color ===== */
+[data-theme="dark"] {
+  /* ===== 颜色 Color ===== */
   --color-primary: #495057;
   --color-secondary: #6c757d;
   --color-success: #28a745;
@@ -15,7 +15,7 @@
   --color-border: #e0e1dd;
 
   /* ===== 字体 Font ===== */
-  --font-family-base: 'Helvetica Neue', Arial, sans-serif;
+  --font-family-base: "Helvetica Neue", Arial, sans-serif;
   --font-size-base: 16px;
   --line-height-base: 1.5;
 
@@ -37,7 +37,7 @@
   --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.15);
 
   /* ===== 组件状态 Component States ===== */
-  --btn-hover-bg: #3388ff;
+  --btn-hover-bg: rgba(246, 247, 249, 0.05);
   --btn-disabled-bg: #c0c0c0;
   --input-border-focus: #80bdff;
-  }
+}
