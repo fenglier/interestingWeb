@@ -608,6 +608,7 @@ const ScreenshotDemo = () => {
       >
         <div className="loader"></div>
       </div>
+      
     </>
   );
 };
