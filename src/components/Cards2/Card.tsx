@@ -7,7 +7,27 @@
  */
 import styles from "./Card.module.scss";
 
-const Card = ({ card, top, left, height, width, title, author, like }) => {
+interface CardProps {
+  card: any;
+  top: number;
+  left: number;
+  height: number;
+  width: number;
+  title: string;
+  author: string;
+  like: number;
+}
+
+const Card: React.FC<CardProps> = ({
+  card,
+  top,
+  left,
+  height,
+  width,
+  title,
+  author,
+  like,
+}) => {
   return (
     <div
       className={styles.card}

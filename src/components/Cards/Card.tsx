@@ -7,7 +7,15 @@
  */
 import styles from "./Card.module.scss";
 
-const Card = ({ card, top, left, height, width }) => {
+interface CardProps {
+  card: { backgroundColor: string };
+  top: number;
+  left: number;
+  height: number;
+  width: number;
+}
+
+const Card: React.FC<CardProps> = ({ card, top, left, height, width }) => {
   return (
     <div
       className={styles.cardBox}

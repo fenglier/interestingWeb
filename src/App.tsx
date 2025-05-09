@@ -13,7 +13,7 @@ export default function App2() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Navigate to="/interestingWeb/welcome" />} />
+        <Route index element={<Navigate to="/home/welcome" />} />
         {routes.flatMap(r =>
           r.children?.map(child => (
             <Route key={child.path} path={child.path} element={child.element} />

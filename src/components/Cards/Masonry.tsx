@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styles from "./Card.module.scss";
 import Card from "./Card";
 import data1 from "./data1.json";
@@ -9,20 +9,20 @@ import { rafThrottle } from "../../tool";
 
 /* 只是使用data1和data2中的尺寸信息，图片用背景颜色替换 */
 
-const getColumnsByWidth = (width) => {
+const getColumnsByWidth = (width: number) => {
   if (width >= 1200) return 5;
   if (width >= 992) return 4;
   if (width >= 768) return 3;
   return 2;
 };
 
-const getGapByWidth = (width) => {
+const getGapByWidth = (width: number) => {
   if (width >= 1200) return 10;
   if (width >= 992) return 10;
   if (width >= 768) return 10;
   return 10;
 };
-const getLeftRightPaddingByWidth = (width) => {
+const getLeftRightPaddingByWidth = (width: number) => {
   if (width >= 1200) return 24;
   if (width >= 992) return 24;
   if (width >= 768) return 24;
@@ -36,10 +36,18 @@ const Masonry = () => {
     getLeftRightPaddingByWidth(window.innerWidth)
   );
   const [cardWidth, setCardWidth] = useState(0);
-  const [columnHeights, setColumnHeights] = useState(Array(columns).fill(0));
-  const [cardPositions, setCardPositions] = useState([]);
-  const [cards, setCards] = useState([]);
-  const containerRef = useRef(null);
+  const [, setColumnHeights] = useState(Array(columns).fill(0));
+  const [cardPositions, setCardPositions] = useState<CardPosition[]>([]);
+  const [cards, setCards] = useState<
+    {
+      id: string;
+      url: string;
+      backgroundColor: string;
+      width: number;
+      height: number;
+    }[]
+  >([]);
+  const containerRef = useRef<HTMLDivElement>(null);
   const page = useRef(1); // 记录是获取那一页的数据
   const [finish, setFinish] = useState(false);
 
@@ -66,7 +74,7 @@ const Masonry = () => {
     }
   }, 200);
 
-  const getData = async (source) => {
+  const getData = async (source: number) => {
     if (source > 2) {
       return;
     }
@@ -85,7 +93,7 @@ const Masonry = () => {
 
   /* 监听Card父容器的宽度，设置card的列数、card之间的gap、cardWidth以及父容器左右的padding */
   useEffect(() => {
-    const observer = new ResizeObserver((entries) => {
+    const observer = new ResizeObserver(() => {
       handleResize();
     });
     if (containerRef.current) {
@@ -103,9 +111,6 @@ const Masonry = () => {
         let data = await getData(page.current++);
         if (data) {
           setCards((pre) => [...pre, ...data]);
-          /*          let [cp, ch] = calculatePositions(data);
-          setCardPositions((pre) => [...pre, ...cp]);
-          setColumnHeights([...ch]); */
         } else {
           setFinish(true);
         }
@@ -115,9 +120,26 @@ const Masonry = () => {
   });
 
   /* 计算card的文章 */
-  const calculatePositions = (cards, tempColumnHeight) => {
-    const positions = [];
-    cards.forEach((card, index) => {
+  interface CardPosition {
+    id: string;
+    top: number;
+    left: number;
+    width: number;
+    height: number;
+  }
+
+  const calculatePositions = (
+    cards: {
+      id: string;
+      url: string;
+      backgroundColor: string;
+      width: number;
+      height: number;
+    }[],
+    tempColumnHeight: number[]
+  ): [CardPosition[], number[]] => {
+    const positions: CardPosition[] = [];
+    cards.forEach((card) => {
       // 找到当前高度最小的列
       const minHeight = Math.min(...tempColumnHeight);
       const columnIndex = tempColumnHeight.indexOf(minHeight);

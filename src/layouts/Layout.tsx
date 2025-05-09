@@ -6,7 +6,7 @@
  * @lastEditTime:
  */
 // src/components/Layout.tsx
-import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import style from "./Layout.module.scss";
 import { useEffect, useState } from "react";
 import routes from "../router.config.tsx";

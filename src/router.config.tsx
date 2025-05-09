@@ -13,12 +13,12 @@ import TreeDemo from "./pages/TreeDemo";
 
 const routes = [
   {
-    path: "/interestingWeb",
-    name: "InterestingWeb",
-    key: "interestingWeb",
+    path: "/home",
+    name: "首页",
+    key: "/home",
     children: [
       {
-        path: "/interestingWeb/welcome",
+        path: "/home/welcome",
         name: "Welcome",
         element: <Welcome />,
       },

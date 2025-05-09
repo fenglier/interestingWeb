@@ -16,12 +16,13 @@ import NavBar from "../components/NavBar/NavBar";
 import html2canvas from "html2canvas";
 import domtoimage from "dom-to-image";
 
-
 // 防抖函数：n秒后执行，如果n秒内又触发，则重新计时
-function debounce(fn, delay) {
-  let timer = null;
-  return function (...args) {
-    clearTimeout(timer);
+function debounce(fn: Function, delay: number) {
+  let timer: NodeJS.Timeout | null = null;
+  return function (this: unknown, ...args: unknown[]) {
+    if (timer !== null) {
+      clearTimeout(timer as NodeJS.Timeout);
+    }
     timer = setTimeout(() => {
       fn.apply(this, args);
     }, delay);
@@ -29,9 +30,9 @@ function debounce(fn, delay) {
 }
 
 // 节流函数：规定n秒内只触发一次
-function throttle(fn, delay) {
+function throttle(fn: Function, delay: number) {
   let lastTime = 0;
-  return function (...args) {
+  return function (this: unknown, ...args: unknown[]) {
     const now = Date.now();
     if (now - lastTime > delay) {
       lastTime = now;
@@ -52,16 +53,16 @@ function handleClickThrottle() {
 function fakeArray() {
   console.log(arguments);
   console.log(Array.isArray(arguments));
-  console.log(Array.isArray(Array.prototype.slice(arguments)));
+  console.log(Array.isArray(Array.from(arguments)));
 }
 
 // 子组件：使用 React.memo 包裹，避免不必要更新
-const Child = memo(({ label }) => {
+const Child: React.FC<{ label: string }> = memo(({ label }) => {
   console.log("👶 子组件渲染: ", label);
   return <div>子组件：{label}</div>;
 });
 
-const useUserGuide = (initialValue) => {
+const useUserGuide = (initialValue: boolean) => {
   const [firstVisit, setFirstVisit] = useState(initialValue);
   const setFirst = () => {
     setFirstVisit(true);
@@ -97,25 +98,32 @@ const useUserGuide = (initialValue) => {
 };
 
 const capture1 = () => {
-  html2canvas(document.getElementById("root")).then(function (canvas) {
-    // 将 canvas 转成图片并下载
-    const link = document.createElement("a");
-    link.href = canvas.toDataURL("image/png");
-    link.download = "screenshot.png";
-    link.click();
-  });
+  const rootElement = document.getElementById("root");
+  if (rootElement) {
+    html2canvas(rootElement).then(function (canvas) {
+      // 将 canvas 转成图片并下载
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/png");
+      link.download = "screenshot.png";
+      link.click();
+    });
+  } else {
+    console.error("Root element not found");
+  }
 };
 
 const capture2 = () => {
-  domtoimage.toPng(document.getElementById("root")).then(function (dataUrl) {
-    const link = document.createElement("a");
-    link.download = "screenshot.png";
-    link.href = dataUrl;
-    link.click();
-  });
+  domtoimage
+    .toPng(document.getElementById("root") as Node)
+    .then(function (dataUrl: string) {
+      const link = document.createElement("a");
+      link.download = "screenshot.png";
+      link.href = dataUrl;
+      link.click();
+    });
 };
 
-const useAnimation = (initialValue) => {
+const useAnimation = (initialValue: boolean): [boolean, () => void] => {
   const [show, setShow] = useState(initialValue);
   const toggle = () => {
     setShow(!show);
@@ -179,10 +187,6 @@ const ScreenshotDemo = () => {
         setCount((prev) => prev + 1);
       });
     },0); */
-  };
-
-  const switchTheme = (themeName) => {
-    document.body.setAttribute("data-theme", themeName);
   };
 
   useEffect(() => {
@@ -406,7 +410,7 @@ const ScreenshotDemo = () => {
           总的来说，我具备扎实的编程基础，同时也有跨学科的背景，能从用户角度去理解前端开发的需求。我热爱前端，也希望能在这个领域持续成长。
         </div>
       </div>
-      
+
       <h2 className="theme">响应式布局卡片列表（Flex）</h2>
       <div className="card-container">
         <div className="card">卡片1</div>
@@ -604,7 +608,6 @@ const ScreenshotDemo = () => {
       >
         <div className="loader"></div>
       </div>
-  
     </>
   );
 };

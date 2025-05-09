@@ -5,7 +5,7 @@
  * @lastEditors: fengli
  * @lastEditTime:
  */
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import styles from "./NavBar.module.scss";
 
 const menuItems = [

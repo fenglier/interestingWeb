@@ -1,43 +1,43 @@
 // themes/_blue.scss
 [data-theme='light'] {
-  /* ===== 颜色 Color ===== */
-  --color-primary: #344e41;
-  --color-secondary: #dad7cd;
-  --color-success: #28a745;
-  --color-danger: #dc3545;
-  --color-warning: #ffc107;
-  --color-info: #17a2b8;
-
-  --color-bg: #dad7cd;
-  --color-bg-secondary: #a3b18a;
-  --color-text: #344e41;
-  --color-text-secondary: #3a5a40;
-  --color-border: #588157;
-
-  /* ===== 字体 Font ===== */
-  --font-family-base: 'Helvetica Neue', Arial, sans-serif;
-  --font-size-base: 16px;
-  --line-height-base: 1.5;
-
-  /* ===== 间距 Spacing ===== */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-
-  /* ===== 圆角 Border Radius ===== */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-
-  /* ===== 阴影 Box Shadow ===== */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.15);
-
-  /* ===== 组件状态 Component States ===== */
-  --btn-hover-bg: #0056b3;
-  --btn-disabled-bg: #c0c0c0;
-  --input-border-focus: #80bdff;
+   /* ===== 颜色 Color ===== */
+   --color-primary: #8290a0; /* 主色调，通常用于按钮、链接、强调文字等 */
+   --color-secondary: #eeeeee; /* 次要色，一般用于背景或次要按钮 */
+   --color-success: #28a745;
+   --color-danger: #dc3545;
+   --color-warning: #ffc107;
+   --color-info: #17a2b8;
+ 
+   --color-bg: #ffffff;
+   --color-bg-secondary: #f8f9fa;
+   --color-text: #212529;
+   --color-text-secondary: #6c757d;
+   --color-border: #212529;
+ 
+   /* ===== 字体 Font ===== */
+   --font-family-base: "Helvetica Neue", Arial, sans-serif;
+   --font-size-base: 16px;
+   --line-height-base: 1.5;
+ 
+   /* ===== 间距 Spacing ===== */
+   --spacing-xs: 4px;   /* 极小间距，例如按钮之间的小空隙 */
+   --spacing-sm: 8px;   /* 小间距，常用于组件内部 */
+   --spacing-md: 16px;  /* 中等间距，是常用的基础间隔值 */
+   --spacing-lg: 24px;  /* 大间距，适合分隔主要模块 */
+   --spacing-xl: 32px;  /* 特大间距，用于分隔整块区域 */
+ 
+   /* ===== 圆角 Border Radius ===== */
+   --radius-sm: 4px;   /* 小圆角，适合按钮、输入框等 */
+   --radius-md: 8px;   /* 中圆角，常见于卡片、弹窗 */
+   --radius-lg: 12px;  /* 大圆角，用于大容器或强调组件 */
+ 
+   /* ===== 阴影 Box Shadow ===== */
+   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);  /* 轻微阴影，几乎不可见，用于细节区分 */
+   --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);   /* 中等阴影，常用于卡片、浮层等 */
+   --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.15);  /* 大阴影，适合悬浮层、模态框等 */
+ 
+   /* ===== 组件状态 Component States ===== */
+   --btn-hover-bg: #0056b3;
+   --btn-disabled-bg: #c0c0c0;
+   --input-border-focus: #80bdff;
 }

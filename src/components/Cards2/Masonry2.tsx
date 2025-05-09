@@ -7,36 +7,61 @@ import data2 from "./data2.json";
 import debounce from "lodash/debounce";
 import { rafThrottle } from "../../tool";
 
+interface CardType {
+  auhtor: string;
+  title: string;
+  id: string;
+  width: number;
+  height: number;
+  left: number;
+  top: number;
+  like: number;
+}
+
+interface CardPostion {
+  width: number;
+  height: number;
+  left: number;
+  top: number;
+  id: string;
+}
+
+interface InputCard {
+  id: string;
+  width: number;
+  height: number;
+}
+
 /* 只是使用data1和data2中的尺寸信息，图片用背景颜色替换 */
 
-const getColumnsByWidth = (width) => {
+const getColumnsByWidth = (width: number) => {
   if (width >= 1200) return 5;
   if (width >= 992) return 4;
   if (width >= 768) return 3;
   return 2;
 };
 
-const getGapByWidth = (width) => {
+const getGapByWidth = (width: number) => {
   if (width >= 1200) return 10;
   if (width >= 992) return 10;
   if (width >= 768) return 10;
   return 10;
 };
-const getLeftRightPaddingByWidth = (width) => {
+const getLeftRightPaddingByWidth = (width: number) => {
   if (width >= 1200) return 24;
   if (width >= 992) return 24;
   if (width >= 768) return 24;
   return 24;
 };
 
-const getData = async (source) => {
+const getData = async (source: number): Promise<CardType[]> => {
   if (source > 2) {
-    return;
+    throw new Error("Invalid data source");
   }
   /* 模拟页面加载是获取数据 */
   const colorArr = ["#cdb4db", "#ffc8dd", "#ffafcc", "#bde0fe", "#a2d2ff"];
   let data = await Promise.resolve(source == 1 ? data1 : data2);
-  let temp_data1 = data.data.items.map((i, index) => ({
+  let temp_data1: CardType[] = data.data.items.map((i, index) => ({
     id: i.id,
     url: i.note_card.cover.url_pre,
     backgroundColor: colorArr[index % colorArr.length],
@@ -44,24 +69,28 @@ const getData = async (source) => {
     height: i.note_card.cover.height,
     title: i.note_card.display_title,
     auhtor: i.note_card.user.nick_name,
-    like: i.note_card.interact_info.liked_count,
+    like: Number(i.note_card.interact_info.liked_count),
+    left: 0, // Default value for left
+    top: 0, // Default value for top
   }));
   return temp_data1;
 };
 
 const useContainer = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const columns = useRef(getColumnsByWidth(window.innerWidth));
   const gap = useRef(getGapByWidth(window.innerWidth));
   const leftRightPadding = useRef(
     getLeftRightPaddingByWidth(window.innerWidth)
   );
   const cardWidth = useRef(0);
-  const columnHeights = useRef(Array(columns).fill(0));
+  const columnHeights = useRef(Array(columns.current).fill(0));
 
-  const [initCardPositions, setInitCardPositions] = useState([]);
-  const [cardPositions, setCardPositions] = useState([]);
-  const [cards, setCards] = useState([]);
+  const [initCardPositions, setInitCardPositions] = useState<CardPostion[]>([]);
+  const [cardPositions, setCardPositions] = useState<
+    { id: string; width: number; height: number; left: number; top: number }[]
+  >([]);
+  const [cards, setCards] = useState<CardType[]>([]);
 
   const [containerWidth, setContainerWidth] = useState(window.innerWidth);
 
@@ -91,7 +120,7 @@ const useContainer = () => {
       setContainerWidth(width);
     }
   }, 200);
-  const handleScroll = rafThrottle(() => {
+  const handleScroll: React.UIEventHandler<HTMLDivElement> = rafThrottle(() => {
     if (!containerRef.current) return;
     const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
     const distanceToBottom = scrollHeight - clientHeight - scrollTop;
@@ -99,7 +128,13 @@ const useContainer = () => {
       const temp = async () => {
         let data = await getData(page.current++);
         if (data) {
-          setCards((pre) => [...pre, ...data]);
+          setCards((pre) => [
+            ...pre,
+            ...data.map((card) => ({
+              ...card,
+              like: Number(card.like),
+            })),
+          ]);
         } else {
           finish.current = true;
         }
@@ -109,10 +144,14 @@ const useContainer = () => {
   });
 
   /* 计算card的位置 */
-  const calculateInitCardPositions = (cards, cardWidth) => {
-    let positions = [];
+
+  const calculateInitCardPositions = (
+    cards: InputCard[],
+    cardWidth: number
+  ): CardType[] => {
+    let positions: CardType[] = [];
     /* 计算图片高度 */
-    cards.forEach((card, index) => {
+    cards.forEach((card) => {
       //计算卡片高度
       const cardHeight = Math.floor((card.height * cardWidth) / card.width);
       // 更新卡片位置
@@ -122,6 +161,9 @@ const useContainer = () => {
         height: cardHeight,
         left: 0,
         top: 0,
+        auhtor: "",
+        title: "",
+        like: 0,
       });
     });
     /* 计算每个card的left和right  */
@@ -129,15 +171,16 @@ const useContainer = () => {
   };
 
   /* 根据已经渲染出来的dom，计算card的，从而移动card */
+
   const calculatePositions2 = (
-    columnHeight,
-    containerRef,
-    leftRightPadding,
-    cardWidth,
-    gap,
-    initCardPositions
-  ) => {
-    const positions = [];
+    columnHeight: number[],
+    containerRef: React.RefObject<HTMLDivElement | null>,
+    leftRightPadding: number,
+    cardWidth: number,
+    gap: number,
+    initCardPositions: CardPostion[]
+  ): [CardPostion[], number[]] => {
+    const positions: CardPostion[] = [];
     const children = containerRef.current!.children;
     Array.from(children).forEach((dom, index) => {
       // 找到当前高度最小的列
@@ -151,7 +194,7 @@ const useContainer = () => {
       const top = minHeight;
 
       //NOTE:真实dom的高度
-      const cardHeight = dom.getBoundingClientRect().height;
+      const cardHeight = (dom as HTMLElement).getBoundingClientRect().height;
 
       // 更新卡片位置
       positions.push({
@@ -194,7 +237,7 @@ const useContainer = () => {
     };
     temp();
 
-    const observer = new ResizeObserver((entries) => {
+    const observer = new ResizeObserver(() => {
       handleResize();
     });
     if (containerRef.current) {
@@ -235,7 +278,12 @@ const useContainer = () => {
       columnHeights.current = [...tempColumnHeight];
     }
   }, [initCardPositions]);
-  return [cards, containerRef, cardPositions, handleScroll];
+  return [cards, containerRef, cardPositions, handleScroll] as [
+    typeof cards,
+    React.RefObject<HTMLDivElement>,
+    typeof cardPositions,
+    typeof handleScroll
+  ];
 };
 
 const Masonry = () => {
@@ -257,20 +305,25 @@ const Masonry = () => {
         onScroll={handleScroll}
       >
         {cards.map((card) => {
-          const position = cardPositions.find((pos) => pos.id === card.id);
-          return position ? (
-            <Card
-              key={card.id}
-              title={card.title}
-              author={card.auhtor}
-              like={card.like}
-              height={position.height}
-              width={position.width}
-              top={position.top}
-              left={position.left}
-              card={card}
-            />
-          ) : null;
+          let position: CardPostion;
+          if (cardPositions.find((pos) => pos.id === card.id)) {
+            position = cardPositions.find((pos) => pos.id === card.id)!;
+            return (
+              <Card
+                key={card.id}
+                title={card.title}
+                author={card.auhtor}
+                like={card.like}
+                height={position.height}
+                width={position.width}
+                top={position.top}
+                left={position.left}
+                card={card}
+              />
+            );
+          } else {
+            return;
+          }
         })}
       </div>
     </>
