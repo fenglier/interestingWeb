@@ -8,9 +8,30 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { ghPages } from "vite-plugin-gh-pages";
+import mdx from "@mdx-js/rollup";
+import * as shiki from "shiki";
+import {
+  BundledLanguage,
+  BundledTheme,
+  codeToHtml,
+  createHighlighter,
+} from "shiki/bundle/web";
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), ghPages()],
-  base: "/interestingWeb", // 非常重要！
+export default defineConfig(async () => {
+  const highlighter = await createHighlighter({
+    langs: ["html", "css", "jsx", "tsx"],
+    themes: ["nord"],
+  });
+  const rehypeShiki = (await import("rehype-shiki")).default;
+  return {
+    plugins: [
+      react(),
+      ghPages(),
+      mdx({
+        remarkPlugins: [],
+        rehypePlugins: [[rehypeShiki, { highlighter }]],
+      }),
+    ],
+    base: "/interestingWeb", // 非常重要！
+  };
 });

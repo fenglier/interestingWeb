@@ -29,6 +29,7 @@
     gap: 1rem;
     height: 100%;
     .default {
+      cursor: pointer;
     }
     .active {
       color: var(--color-success);
@@ -61,6 +62,7 @@
   .sideItem {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    cursor: pointer;
   }
   .active {
     color: var(--color-success);
