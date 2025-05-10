@@ -44,6 +44,12 @@ const routes = [
         name: "树形控件",
         element: <TreeDemo />,
       },
+      {
+        path: "/components/tree",
+        name: "树形控件",
+        key:"temp2",
+        element: <TreeDemo />,
+      },
     ],
   },
 ];

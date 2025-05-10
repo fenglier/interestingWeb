@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import routes from "../router.config.tsx";
 import Mode from "../components/mode/index.tsx";
 import logo from "../assets/logo.png";
+import RouterSearch from "./RouterSearch/index.tsx";
 
 const Layout = () => {
   const location = useLocation();
@@ -73,10 +74,10 @@ const Layout = () => {
             InterestingWeb
           </a>
         </span>
-        <div className={style.ocuppy}></div>
+        <div className={style.search}>
+          <RouterSearch />
+        </div>
         <nav className={style.firstNav}>
-          {/* TODO */}
-          <span>search</span>
           <span>
             <a
               href="https://github.com/fenglier/interestingWeb"
