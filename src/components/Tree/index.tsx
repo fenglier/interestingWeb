@@ -96,7 +96,6 @@ const Tree: React.FC<TreeProps> = ({ data, onChange }) => {
   const [node, nodeMap, setNode] = useTreeNode(data);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {  checked, id } = e.target;
-    console.log(e.target);
     /* 查询当前节点，并设置它的check */
     const currentNode = nodeMap.current.get(id);
     currentNode.check = checked

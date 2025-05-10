@@ -27,7 +27,6 @@ const Layout = () => {
   const topNav = (
     <>
       {routes.map((r) => {
-        console.log(r.key);
         return (
           <div
             key={r.key}
@@ -50,7 +49,6 @@ const Layout = () => {
       {routes
         .find((r) => r.key === activeTop)
         ?.children?.map((child) => {
-          console.log(child.path);
           return (
             <div
               key={child.path}
