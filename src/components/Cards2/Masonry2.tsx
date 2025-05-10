@@ -2,8 +2,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styles from "./Card.module.scss";
 import Card from "./Card";
-import data1 from "./data1.json";
-import data2 from "./data2.json";
 import debounce from "lodash/debounce";
 import { rafThrottle } from "../../tool";
 
@@ -54,29 +52,9 @@ const getLeftRightPaddingByWidth = (width: number) => {
   return 24;
 };
 
-const getData = async (source: number): Promise<CardType[]> => {
-  if (source > 2) {
-    throw new Error("Invalid data source");
-  }
-  /* 模拟页面加载是获取数据 */
-  const colorArr = ["#cdb4db", "#ffc8dd", "#ffafcc", "#bde0fe", "#a2d2ff"];
-  let data = await Promise.resolve(source == 1 ? data1 : data2);
-  let temp_data1: CardType[] = data.data.items.map((i, index) => ({
-    id: i.id,
-    url: i.note_card.cover.url_pre,
-    backgroundColor: colorArr[index % colorArr.length],
-    width: i.note_card.cover.width,
-    height: i.note_card.cover.height,
-    title: i.note_card.display_title,
-    auhtor: i.note_card.user.nick_name,
-    like: Number(i.note_card.interact_info.liked_count),
-    left: 0, // Default value for left
-    top: 0, // Default value for top
-  }));
-  return temp_data1;
-};
 
-const useContainer = () => {
+
+const useContainer = (getData: { (page: number): Promise<CardType[]>; (arg0: number): any; }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const columns = useRef(getColumnsByWidth(window.innerWidth));
   const gap = useRef(getGapByWidth(window.innerWidth));
@@ -286,8 +264,15 @@ const useContainer = () => {
   ];
 };
 
-const Masonry = () => {
-  const [cards, containerRef, cardPositions, handleScroll] = useContainer();
+
+
+interface MasonryProps {
+  getData: (page: number) => Promise<CardType[]>;
+}
+
+const Masonry = ({ getData }: MasonryProps) => {
+  const [cards, containerRef, cardPositions, handleScroll] =
+    useContainer(getData);
   return (
     <>
       <svg style={{ display: "none" }}>

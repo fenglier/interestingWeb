@@ -8,7 +8,7 @@
  */
 import Welcome from "./pages/Welcome";
 import CarouselDemo from "./pages/CarouselDemo.mdx";
-import WaterfallDemo from "./pages/WaterfallDemo";
+import WaterfallDemo from "./pages/WaterfallDemo.mdx";
 import TreeDemo from "./pages/TreeDemo.mdx";
 
 const routes = [
