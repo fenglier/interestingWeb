@@ -14,6 +14,7 @@ import Mode from "../components/mode/index.tsx";
 import logo from "../assets/logo.png";
 import RouterSearch from "./RouterSearch/index.tsx";
 import { position } from "html2canvas/dist/types/css/property-descriptors/position";
+import { debounce } from "lodash";
 
 enum screen_size {
   phone = 0,
@@ -39,9 +40,9 @@ const useMedia = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   });
-  const toggleSecondMenu = () => {
+  const toggleSecondMenu = debounce(() => {
     setShoSecondMenu((pre) => !pre);
-  };
+  }, 50);
   return [size, showSecondMenu, toggleSecondMenu];
 };
 
@@ -140,13 +141,12 @@ const Layout = () => {
           </div>
         </nav>
       </header>
-      {/* TODO:如果平面尺寸过小，采用汉堡包菜单控制二级菜单。此时二级菜单的position为：absolute */}
+      {/* 如果平面尺寸过小，采用汉堡包菜单控制二级菜单。此时二级菜单的position为：absolute */}
       <div
         className={style.sidebar}
         style={
           size == screen_size.phone
             ? {
-                position: "absolute",
                 boxShadow: "var(--shadow-lg)",
                 zIndex: 999,
                 transform: `translateX(${showSecondMeanu ? 0 : -100}%)`,
@@ -158,11 +158,24 @@ const Layout = () => {
       >
         {sideNav}
       </div>
+      {/* 遮罩 */}
+      {showSecondMeanu ? (
+        <div
+          onClick={toggleSecondMenu}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: " rgba(0, 0, 0, 0.4)",
+            zIndex: 10,
+            cursor: "pointer",
+          }}
+        ></div>
+      ) : null}
       <main
         className={style.main}
         style={
           size == screen_size.phone
-            ? { marginLeft: "0rem", opacity: 0.3 }
+            ? { marginLeft: "0rem" }
             : { marginLeft: "10rem" }
         }
       >
