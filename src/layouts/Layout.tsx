@@ -13,11 +13,43 @@ import routes from "../router.config.tsx";
 import Mode from "../components/mode/index.tsx";
 import logo from "../assets/logo.png";
 import RouterSearch from "./RouterSearch/index.tsx";
+import { position } from "html2canvas/dist/types/css/property-descriptors/position";
+
+enum screen_size {
+  phone = 0,
+  pad = 1,
+  desktop = 2,
+  superscreen = 3,
+}
+const getLevel = () => {
+  const width = window.innerWidth;
+  if (width <= 576) return screen_size.phone;
+  if (width > 576 && width <= 768) return screen_size.pad;
+  if (width > 768 && width <= 992) return screen_size.desktop;
+  return screen_size.superscreen;
+};
+const useMedia = () => {
+  const [size, setSize] = useState<number>(getLevel());
+  const [showSecondMenu, setShoSecondMenu] = useState<boolean>(false);
+  useEffect(() => {
+    // 监听屏幕尺寸变化
+    const handleResize = () => {
+      setSize(getLevel());
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  });
+  const toggleSecondMenu = () => {
+    setShoSecondMenu((pre) => !pre);
+  };
+  return [size, showSecondMenu, toggleSecondMenu];
+};
 
 const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeTop, setActiveTop] = useState("");
+  const [size, showSecondMeanu, toggleSecondMenu] = useMedia();
 
   useEffect(() => {
     const top = routes.find((r) => location.pathname.startsWith(r.path));
@@ -67,9 +99,17 @@ const Layout = () => {
     <>
       <header className={style.header}>
         <span className={style.title}>
+          {/* 媒体查询，小屏幕用汉堡控制二级菜单 */}
+          {size == screen_size.phone ? (
+            <span onClick={toggleSecondMenu}>
+              <svg width={20} height={20} viewBox="0 0 20 20">
+                <path d="M3.25 4.167h13.5a.75.75 0 0 1 0 1.5H3.25a.75.75 0 0 1 0-1.5M3.25 9.25h13.5a.75.75 0 0 1 0 1.5H3.25a.75.75 0 0 1 0-1.5M16.75 14.333H3.25a.75.75 0 0 0 0 1.5h13.5a.75.75 0 0 0 0-1.5"></path>
+              </svg>
+            </span>
+          ) : null}
           <a onClick={() => navigate("/")}>
             <img src={logo} draggable="false" alt="logo" />
-            InterestingWeb
+            <span className={style.name}>InterestingWeb</span>
           </a>
         </span>
         <div className={style.search}>
@@ -100,8 +140,32 @@ const Layout = () => {
           </div>
         </nav>
       </header>
-      <div className={style.sidebar}>{sideNav}</div>
-      <main className={style.main}>
+      {/* TODO:如果平面尺寸过小，采用汉堡包菜单控制二级菜单。此时二级菜单的position为：absolute */}
+      <div
+        className={style.sidebar}
+        style={
+          size == screen_size.phone
+            ? {
+                position: "absolute",
+                boxShadow: "var(--shadow-lg)",
+                zIndex: 999,
+                transform: `translateX(${showSecondMeanu ? 0 : -100}%)`,
+                opacity: `${showSecondMeanu ? 1 : 0}`,
+                transition: "transform 0.3s ease, opacity 0.3s ease",
+              }
+            : { position: "fixed" }
+        }
+      >
+        {sideNav}
+      </div>
+      <main
+        className={style.main}
+        style={
+          size == screen_size.phone
+            ? { marginLeft: "0rem", opacity: 0.3 }
+            : { marginLeft: "10rem" }
+        }
+      >
         <div className={style.route}>
           <Outlet /> {/* 渲染匹配到的子路由 */}
         </div>
