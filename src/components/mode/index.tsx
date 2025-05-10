@@ -11,7 +11,7 @@ import style from "./index.module.scss";
 
 // src/pages/About.tsx
 const Mode = () => {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState(localStorage.getItem("theme") || "light");
   const toggleMode = () => {
     startTransition(() => {
       setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));

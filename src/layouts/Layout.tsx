@@ -95,7 +95,9 @@ const Layout = () => {
           </span>
           {topNav}
           {/* 夜间模式和白日模式 */}
-          <Mode />
+          <div className={style.default}>
+            <Mode />
+          </div>
         </nav>
       </header>
       <div className={style.sidebar}>{sideNav}</div>

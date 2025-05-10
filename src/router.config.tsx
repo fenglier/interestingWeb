@@ -9,7 +9,7 @@
 import Welcome from "./pages/Welcome";
 import CarouselDemo from "./pages/CarouselDemo.mdx";
 import WaterfallDemo from "./pages/WaterfallDemo";
-import TreeDemo from "./pages/TreeDemo";
+import TreeDemo from "./pages/TreeDemo.mdx";
 
 const routes = [
   {

@@ -1,15 +1,18 @@
-@use './styles/themes/_variables.scss';
-@use './styles/themes/light.scss';
-@use './styles/themes/dark.scss';
-@use './styles/themes/blue.scss';
+@use "./styles/themes/_variables.scss";
+@use "./styles/themes/light.scss";
+@use "./styles/themes/dark.scss";
+@use "./styles/themes/blue.scss";
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-html, body{
+html,
+body {
   font-size: clamp(12px, 2.5vw, 18px);
   background-color: var(--color-bg);
   color: var(--color-text);
+  margin: 0;
+  padding: 0;
 }

@@ -56,6 +56,10 @@ const generateParentAndId = (
     tempNode.expand == undefined || tempNode.expand == null
       ? true
       : tempNode.expand;
+  tempNode.check =
+    tempNode.check == undefined || tempNode.check == null
+      ? NodeCheckState.UNCHECKED
+      : tempNode.check;
   return tempNode;
 };
 const useTreeNode = (data: OuterTreeNode[]): any[] => {
@@ -95,7 +99,7 @@ const useTreeNode = (data: OuterTreeNode[]): any[] => {
 const Tree: React.FC<TreeProps> = ({ data, onChange }) => {
   const [node, nodeMap, setNode] = useTreeNode(data);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {  checked, id } = e.target;
+    const { checked, id } = e.target;
     /* 查询当前节点，并设置它的check */
     const currentNode = nodeMap.current.get(id);
     currentNode.check = checked
