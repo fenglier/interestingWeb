@@ -71,6 +71,7 @@ const RouterSearch = () => {
           placeholder="搜索"
           className={style.search}
           onChange={handleChange}
+          onFocus={handleChange}
         />
       </div>
       {results.length && showResults ? (
@@ -84,6 +85,19 @@ const RouterSearch = () => {
             </li>
           ))}
         </ul>
+      ) : null}
+      {/* 遮罩 */}
+      {results.length && showResults ? (
+        <div
+          onClick={() => setShowResults(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            /* background: " rgba(0, 0, 0, 0.4)", */
+            zIndex: 10,
+            cursor: "pointer",
+          }}
+        ></div>
       ) : null}
     </>
   );

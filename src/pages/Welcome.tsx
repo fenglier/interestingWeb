@@ -76,7 +76,7 @@ const useUserGuide = (initialValue: boolean) => {
         doneBtnText: "完成",
         steps: [
           {
-            element: "#themeSwitch",
+            element: "#nineLayout",
             popover: { title: "模块主题", description: "模块主题" },
           },
           {
@@ -207,8 +207,8 @@ const ScreenshotDemo = () => {
           第一次访问本网站
         </button>
       </div>
-      <div className="theme">九宫格布局</div>
-      <div className="flex">
+      <div className="theme" id="nineLayout">九宫格布局</div>
+      <div className="flex" id="implement">
         <div className="item">1</div>
         <div className="item">2</div>
         <div className="item">3</div>
@@ -450,12 +450,6 @@ const ScreenshotDemo = () => {
       <div className="theme">使用Masonry,left top实现瀑布流</div>
       <div className="BFC">
         <Masonry />
-      </div>
-      <div className="theme">
-        使用Masonry,left top实现瀑布流，通过获取真实dom，确定left和top
-      </div>
-      <div className="BFC">
-        <Masonry2 />
       </div>
       <div className="theme">bilibili鼠标移进图标，图标抖动</div>
       <div className="BFC">

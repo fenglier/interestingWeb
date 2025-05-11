@@ -1,0 +1,139 @@
+.container {
+  display: flex;
+  height: 4rem;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding-inline-start: 1rem;
+    .icon {
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.06);
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.5em; // 用 padding 控制大小
+    }
+    .iconFinish {
+      border: 1px solid var(--color-success);
+    }
+
+    .iconActive {
+      position: absolute;
+      border: 1px solid #ccc;
+      border-top: 1px solid #4caf50;
+      animation: spin 1s linear infinite;
+    }
+    .iconActive::after{
+      content: '';
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .content {
+      position: relative;
+      flex-grow: 1;
+      display: inline-block;
+      overflow: hidden;
+    }
+    .content::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background-color: var(--color-secondary);
+      z-index: 0;
+      top: 50%;
+    }
+    .content.finish::after {
+      background-color: var(--color-success);
+    }
+  }
+}
+
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+  margin: 50px auto;
+  position: relative;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex-grow: 1;
+  text-align: center;
+}
+
+/* 小圆圈 */
+.circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-weight: bold;
+  z-index: 1;
+}
+
+/* 步骤完成 */
+.step.completed .circle {
+  background-color: #dbeafe;
+  color: #3b82f6;
+}
+
+/* 当前步骤 */
+.step.active .circle {
+  background-color: #3b82f6;
+  color: #fff;
+}
+
+/* 步骤文字 */
+.label {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* 连线，用 ::after 实现 */
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 16px; /* 垂直居中 */
+  left: 50%;
+  height: 2px;
+  width: 100%;
+  background-color: #3b82f6;
+  z-index: 0;
+}
+
+/* 让线只填满两点之间 */
+.stepper .step:first-child::after {
+  left: 50%;
+  width: 100%;
+}
+
+.stepper .step:nth-child(2)::after {
+  left: 0;
+  width: 100%;
+}
+
+.stepper .step:last-child::after {
+  display: none;
+}

@@ -1,5 +1,5 @@
 // themes/_dark.scss
-[data-theme="dark"] {
+html[data-theme="dark"] {
   /* ===== 颜色 Color ===== */
   --color-primary: #495057;
   --color-secondary: #6c757d;
@@ -9,7 +9,7 @@
   --color-info: #17a2b8;
 
   --color-bg: #212529;
-  --color-bg-secondary: #f8f9fa;
+  --color-bg-secondary: #6c757d;
   --color-text: #f8f9fa;
   --color-text-secondary: #6c757d;
   --color-border: #e0e1dd;
@@ -40,4 +40,6 @@
   --btn-hover-bg: rgba(246, 247, 249, 0.05);
   --btn-disabled-bg: #c0c0c0;
   --input-border-focus: #80bdff;
+
+
 }

@@ -13,7 +13,6 @@ import routes from "../router.config.tsx";
 import Mode from "../components/mode/index.tsx";
 import logo from "../assets/logo.png";
 import RouterSearch from "./RouterSearch/index.tsx";
-import { position } from "html2canvas/dist/types/css/property-descriptors/position";
 import { debounce } from "lodash";
 
 enum screen_size {
@@ -184,7 +183,9 @@ const Layout = () => {
         </div>
       </main>
 
-      <footer>© 2025 我的网站</footer>
+      <footer style={{ display: "flex", justifyContent: "center" }}>
+        © 2025 莉莉娅的网站
+      </footer>
     </>
   );
 };

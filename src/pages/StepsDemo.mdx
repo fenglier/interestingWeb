@@ -1,0 +1,55 @@
+import Steps from "../components/Steps/index.tsx";
+
+export const StepsDemo = () => {
+  const current = 1;
+  const steps = [
+    {
+      title: "First",
+      content: "First-content",
+    },
+    {
+      title: "Second",
+      content: "Second-content",
+    },
+    {
+      title: "Last",
+      content: "Last-content",
+    },
+  ];
+  return <Steps current={current} items={steps} />;
+};
+
+# 步骤条 Steps
+
+结合flex布局和伪元素::after实现
+
+---
+
+## 🎬 效果展示
+
+<StepsDemo />
+
+## 💡 使用方法
+
+```tsx
+import Steps from "../components/Steps/index.tsx";
+
+export const StepsDemo = () => {
+  const current = 1;
+  const steps = [
+    {
+      title: "First",
+      content: "First-content",
+    },
+    {
+      title: "Second",
+      content: "Second-content",
+    },
+    {
+      title: "Last",
+      content: "Last-content",
+    },
+  ];
+  return <Steps current={current} items={steps} />;
+};
+```

@@ -10,6 +10,7 @@ import Welcome from "./pages/Welcome";
 import CarouselDemo from "./pages/CarouselDemo.mdx";
 import WaterfallDemo from "./pages/WaterfallDemo.mdx";
 import TreeDemo from "./pages/TreeDemo.mdx";
+import StepsDemo from './pages/StepsDemo.mdx'
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
         path: "/components/tree",
         name: "树形控件",
         element: <TreeDemo />,
+      },
+        {
+        path: "/components/Steps",
+        name: "步骤条",
+        element: <StepsDemo />,
       },
     ],
   },

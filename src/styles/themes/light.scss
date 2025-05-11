@@ -1,5 +1,5 @@
 // themes/_blue.scss
-[data-theme='light'] {
+html[data-theme='light'] {
    /* ===== 颜色 Color ===== */
    --color-primary: #8290a0; /* 主色调，通常用于按钮、链接、强调文字等 */
    --color-secondary: #eeeeee; /* 次要色，一般用于背景或次要按钮 */
@@ -40,4 +40,6 @@
    --btn-hover-bg: rgba(35,39,47,.05);
    --btn-disabled-bg: #c0c0c0;
    --input-border-focus: #80bdff;
+
+
 }
