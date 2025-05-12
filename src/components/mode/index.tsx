@@ -20,8 +20,14 @@ const Mode = () => {
   };
   useEffect(() => {
     let theme = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("data-theme", theme);
-
+    /* NOTE:配合最外层index.scss的::view-transition使用，构建从页面右上角到左下角的炫酷切换效果 */
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+      });
+    } else {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
   }, [mode]);
   return (
     <>

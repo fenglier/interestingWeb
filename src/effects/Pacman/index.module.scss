@@ -1,6 +1,7 @@
 .pacMan {
   display: inline-block;
   position: relative;
+  height: 50px;
   /* 或者使用position:absolute,创建眼睛 */
   .eyeCenter {
     display: flex;
