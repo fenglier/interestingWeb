@@ -1,0 +1,30 @@
+.container {
+  position: relative;
+  padding: 0.5rem;
+  display: inline-block;
+}
+.container::after {
+  position: absolute;
+  content: "";
+  background: red;
+  border-radius: 50%;
+  width: 0.2rem;
+  aspect-ratio: 1/1;
+}
+
+.messageOutside {
+  position: relative;
+  display: inline-block;
+  .unread {
+    position: absolute;
+    left: 80%;
+    top: -20%;
+    padding: 0.1rem;
+    z-index: 1;
+    background-color: #fa5a57;
+    border-radius: 50%;
+    color: var(--color-bg);
+    font-size: 0.5rem;
+    line-height: 0.5rem;
+  }
+}

@@ -10,7 +10,11 @@ import Welcome from "./pages/Welcome";
 import CarouselDemo from "./pages/CarouselDemo.mdx";
 import WaterfallDemo from "./pages/WaterfallDemo.mdx";
 import TreeDemo from "./pages/TreeDemo.mdx";
-import StepsDemo from './pages/StepsDemo.mdx'
+import StepsDemo from "./pages/StepsDemo.mdx";
+import MessageDemo from "./pages/MessageDemo.mdx";
+import ShakeDemo from "./pages/ShakeDemo.mdx";
+import PushDemo from "./pages/PushDemo.mdx";
+import PacmanDemo from "./pages/PacmanDemo.mdx";
 
 const routes = [
   {
@@ -32,23 +36,50 @@ const routes = [
     children: [
       {
         path: "/components/carousel",
-        name: "轮播图",
+        name: "Carousel 轮播图",
         element: <CarouselDemo />,
       },
       {
         path: "/components/waterfall",
-        name: "瀑布流",
+        name: "Waterfall 瀑布流",
         element: <WaterfallDemo />,
       },
       {
         path: "/components/tree",
-        name: "树形控件",
+        name: "Tree 树形控件",
         element: <TreeDemo />,
       },
-        {
+      {
         path: "/components/Steps",
-        name: "步骤条",
+        name: "Steps 步骤条",
         element: <StepsDemo />,
+      },
+      {
+        path: "/components/Message",
+        name: "Message 未读信息",
+        element: <MessageDemo />,
+      },
+    ],
+  },
+  {
+    path: "/effects",
+    name: "特效",
+    key: "effects",
+    children: [
+      {
+        path: "/effects/shake",
+        name: "抖动",
+        element: <ShakeDemo />,
+      },
+      {
+        path: "/effects/push",
+        name: "推开",
+        element: <PushDemo />,
+      },
+      {
+        path: "/effects/pacman",
+        name: "吃豆人",
+        element: <PacmanDemo />,
       },
     ],
   },

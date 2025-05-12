@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  .exist {
+    cursor: pointer;
+  }
+  .expander {
+    max-width: 0;
+    transition: max-width 3s ease;
+    overflow: hidden;
+  }
+  .expander.open {
+    max-width: 10rem;
+    /* 为什么 width: auto 没有过渡动画？因为：auto 是一个非具体的数值，CSS 引擎无法提前计算动画的中间值。 */
+  }
+}

@@ -207,7 +207,9 @@ const ScreenshotDemo = () => {
           第一次访问本网站
         </button>
       </div>
-      <div className="theme" id="nineLayout">九宫格布局</div>
+      <div className="theme" id="nineLayout">
+        九宫格布局
+      </div>
       <div className="flex" id="implement">
         <div className="item">1</div>
         <div className="item">2</div>
@@ -602,9 +604,10 @@ const ScreenshotDemo = () => {
       >
         <div className="loader"></div>
       </div>
-      
     </>
   );
 };
 
 export default ScreenshotDemo;
+
+

@@ -1,0 +1,139 @@
+.pacMan {
+  display: inline-block;
+  position: relative;
+  /* 或者使用position:absolute,创建眼睛 */
+  .eyeCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.4em;
+    height: 0.4em;
+    background-color: transparent;
+    position: absolute;
+    top: 6px;
+    left: 21px;
+    z-index: 2000;
+    .eye {
+      width: 0.4em;
+      height: 0.4em;
+      border-radius: 50%;
+      background-color: #333;
+      top: 6px;
+      left: 21px;
+      z-index: 2000;
+      animation: openclose 0.32s 0s infinite;
+    }
+  }
+  @keyframes openclose {
+    0% {
+      height: (0.4em);
+    }
+
+    50% {
+      height: 0.3em;
+    }
+
+    100% {
+      height: 0.2em;
+    }
+  }
+
+  /* mouth1搭配mouth2组成吃豆人张嘴闭嘴的动画 */
+  .mouth1 {
+    width: 0;
+    height: 0;
+    border: 25px solid #e1b204;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: upup 0.32s 0s infinite;
+    position: absolute;
+    z-index: 3;
+  }
+
+  @keyframes upup {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(45deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .mouth2 {
+    width: 0;
+    height: 0;
+    border: 25px solid #e1b204;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: downdown 0.32s 0s infinite;
+    position: absolute;
+    z-index: 3;
+  }
+
+  @keyframes downdown {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(-45deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  /* 豆子不断移动 */
+  .bean1 {
+    background-color: #e1b204;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    transform: translateY(0px);
+    top: 25px;
+    left: 100px;
+    animation: beanAnimation 1s linear 0.52s infinite;
+  }
+
+  .bean2 {
+    background-color: #e1b204;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    transform: translateY(0px);
+    top: 25px;
+    left: 100px;
+    animation: beanAnimation 1s linear 1.1s infinite;
+  }
+
+  @keyframes beanAnimation {
+    75% {
+      opacity: 0.72;
+    }
+
+    100% {
+      transform: translate(-100px, 0px);
+    }
+  }
+}
+
+/* 使用伪元素创建吃豆人的眼睛 */
+/* .pacMan::before {
+  content: "";
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 50%;
+  background-color: #333;
+  position: absolute;
+  top: 6px;
+  left: 21px;
+  z-index: 2000;
+} */

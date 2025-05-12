@@ -1,0 +1,53 @@
+import Pacman from "../effects/Pacman";
+export const PacmanDemo = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        width: "100%",
+        height: "10rem",
+        justifyContent: "center",
+        alignItems: "center",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      <Pacman />
+    </div>
+  );
+};
+
+# 吃豆人效果 Pacman
+
+常用于装饰、加载动画、视觉趣味等
+
+> 关键点是 border-right:transparent 形成 2 个扇形，然后旋转它们，形成张闭嘴的效果；使用::before 伪元素形成眼睛；豆子靠近嘴巴消失。
+
+```scss
+
+```
+
+## 🎬 效果展示
+
+<PacmanDemo />
+
+## 💡 使用方法
+
+```tsx
+import Pacman from "../effects/Pacman";
+export const PacmanDemo = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        width: "100%",
+        height: "10rem",
+        justifyContent: "center",
+        alignItems: "center",
+        boxShadow: "var(--shadow-lg)",
+      }}
+    >
+      <Pacman />
+    </div>
+  );
+};
+```

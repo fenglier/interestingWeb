@@ -1,0 +1,48 @@
+import Shake from "../effects/Shake";
+import Message, { MessageWithCount } from "../components/Message/index.tsx";
+export const ShakeDemo = () => {
+  return (
+    <Shake>
+      <Message />
+    </Shake>
+  );
+};
+
+# 抖动效果 Shake
+
+抖动效果常**引起用户注意或提示错误**，是“负反馈”的常见表现
+
+> 它是使用translate和transform实现的。
+
+```scss
+@keyframes shake {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+```
+
+
+## 🎬 效果展示
+
+<ShakeDemo />
+
+## 💡 使用方法
+
+```tsx
+import Shake from "../effects/Shake";
+import Message, { MessageWithCount } from "../components/Message/index.tsx";
+export const ShakeDemo = () => {
+  return (
+    <Shake>
+      <Message />
+    </Shake>
+  );
+};
+```

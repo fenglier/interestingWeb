@@ -1,0 +1,36 @@
+import Message, { MessageWithCount } from "../components/Message/index.tsx";
+
+export const MessageDemo = () => {
+  return (
+    <>
+      <Message />
+      <MessageWithCount count={99} />
+    </>
+  );
+};
+
+# 未读信息 Message
+
+使用伪元素::after ,'position:absolute'和 left、top 实现、
+>
+1. ::after 插入的位置是内容（content）的最后面，就像你在元素末尾加了一段文字；
+2. 它的渲染位置仍在 content 区域之内；
+
+## 🎬 效果展示
+
+<MessageDemo />
+
+## 💡 使用方法
+
+```tsx
+import Message, { MessageWithCount } from "../components/Message/index.tsx";
+
+export const MessageDemo = () => {
+  return (
+    <>
+      <Message />
+      <MessageWithCount count={99} />
+    </>
+  );
+};
+```
