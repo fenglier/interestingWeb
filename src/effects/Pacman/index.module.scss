@@ -1,7 +1,7 @@
 .pacMan {
   display: inline-block;
   position: relative;
-  height: 50px;
+  height: 3rem; // 50px;
   /* 或者使用position:absolute,创建眼睛 */
   .eyeCenter {
     display: flex;
@@ -43,7 +43,7 @@
   .mouth1 {
     width: 0;
     height: 0;
-    border: 25px solid #e1b204;
+    border: 1.5rem solid #e1b204;
     border-radius: 50%;
     border-right-color: transparent;
     animation: upup 0.32s 0s infinite;
@@ -68,7 +68,7 @@
   .mouth2 {
     width: 0;
     height: 0;
-    border: 25px solid #e1b204;
+    border: 1.5rem solid #e1b204;
     border-radius: 50%;
     border-right-color: transparent;
     animation: downdown 0.32s 0s infinite;
@@ -94,24 +94,23 @@
   .bean1 {
     background-color: #e1b204;
     border-radius: 50%;
-    width: 10px;
-    height: 10px;
+    width: 0.6rem;
+    height: 0.6rem;
     position: absolute;
     transform: translateY(0px);
-    top: 25px;
-    left: 100px;
+    top: 1.5rem;
+    left: 6rem;
     animation: beanAnimation 1s linear 0.52s infinite;
   }
 
   .bean2 {
-    background-color: #e1b204;
     border-radius: 50%;
-    width: 10px;
-    height: 10px;
+    width: 0.6rem;
+    height: 0.6rem;
     position: absolute;
     transform: translateY(0px);
-    top: 25px;
-    left: 100px;
+    top: 1.5rem;
+    left: 6rem;
     animation: beanAnimation 1s linear 1.1s infinite;
   }
 
@@ -121,7 +120,7 @@
     }
 
     100% {
-      transform: translate(-100px, 0px);
+      transform: translate(-6rem, 0px);
     }
   }
 }

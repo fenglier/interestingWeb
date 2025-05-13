@@ -87,7 +87,13 @@
   .sideItem {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
     cursor: pointer;
+  }
+  .sideItem:hover{
+    border-radius: var( --radius-md);
+    background-color: rgb(0,0,0,0.1);
+    box-shadow: var(--shadow-md);
   }
   .active {
     color: var(--color-success);

@@ -1,0 +1,35 @@
+.rippleButton {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  /*   padding: 12px 24px;
+  font-size: 16px; */
+  border: none;
+  /*   border-radius: 8px; */
+  background-color: var(--color-primary);
+  color: white;
+
+  outline: none;
+  user-select: none;
+  transition: background-color 0.3s;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(0);
+  animation: ripple-animation 6000ms ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}

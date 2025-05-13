@@ -1,0 +1,48 @@
+import Ripple from "../effects/Ripple";
+
+export const ButtonDemo = () => {
+  return (
+    <Ripple>
+      <div
+        style={{
+          width: "5rem",
+          height: "5rem",
+          backgroundColor: "var(--color-bg-primary)",
+        }}
+      ></div>
+    </Ripple>
+  );
+};
+
+# 水波纹效果 Ripple
+
+它是一种非常常见的用户交互反馈动画。实现原理如下：
+
+1. 用户点击按钮，记录点击位置（相对于按钮的位置）。通过 event.clientX/clientY 获取点击点的坐标
+2. 在该位置创建一个圆形元素（div），并设置初始样式。
+3. 用 CSS 动画（transform: scale(...) + opacity）来让它从小变大+渐隐。
+4. 动画结束后移除该元素。
+
+## 🎬 效果展示
+
+<ButtonDemo />
+
+## 💡 使用方法
+
+```tsx
+import Ripple from "../effects/Ripple";
+
+export const ButtonDemo = () => {
+  return (
+    <Ripple>
+      <div
+        style={{
+          width: "5rem",
+          height: "5rem",
+          backgroundColor: "var(--color-bg-primary)",
+        }}
+      ></div>
+    </Ripple>
+  );
+};
+```

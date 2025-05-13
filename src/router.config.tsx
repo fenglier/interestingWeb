@@ -7,14 +7,17 @@
  * @lastEditTime:
  */
 import Welcome from "./pages/Welcome";
+
 import CarouselDemo from "./pages/CarouselDemo.mdx";
 import WaterfallDemo from "./pages/WaterfallDemo.mdx";
 import TreeDemo from "./pages/TreeDemo.mdx";
 import StepsDemo from "./pages/StepsDemo.mdx";
 import MessageDemo from "./pages/MessageDemo.mdx";
+import ImagePreviewDemo from "./pages/ImagePreviewDemo.mdx";
 import ShakeDemo from "./pages/ShakeDemo.mdx";
 import PushDemo from "./pages/PushDemo.mdx";
 import PacmanDemo from "./pages/PacmanDemo.mdx";
+import RippleDemo from "./pages/RippleDemo.mdx";
 
 const routes = [
   {
@@ -59,6 +62,11 @@ const routes = [
         name: "Message 未读信息",
         element: <MessageDemo />,
       },
+      {
+        path: "/components/ImagePreview",
+        name: "ImagePreview 图片预览",
+        element: <ImagePreviewDemo />,
+      },
     ],
   },
   {
@@ -80,6 +88,11 @@ const routes = [
         path: "/effects/pacman",
         name: "吃豆人",
         element: <PacmanDemo />,
+      },
+      {
+        path: "/effects/ripple",
+        name: "水波纹",
+        element: <RippleDemo />,
       },
     ],
   },
