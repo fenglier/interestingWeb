@@ -7,15 +7,21 @@
  */
 import { useRef, useState } from "react";
 import style from "./index.module.scss";
+import { flushSync } from "react-dom";
 
 interface ImagePreviewProps {
   src: string;
   alt?: string;
   width?: string;
 }
+
+// 动画时长
+const ANIMATION_TIME = 0.3;
+
 const ImagePreview: React.FC<ImagePreviewProps> = ({ src, alt, width }) => {
   const [zoomed, setZoomed] = useState(false);
-  const [originTransform, setOriginTransform] = useState("");
+  const [transform, setTransform] = useState("");
+  const preTransfromRef = useRef("");
   const imageRef = useRef<HTMLImageElement>(null);
   const zoomedRef = useRef<HTMLImageElement>(null);
 
@@ -36,14 +42,27 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ src, alt, width }) => {
     const translateY = rect.top;
 
     const startTransform = `translate(${translateX}px, ${translateY}px) scale(${scale}, ${scale})`;
-    setOriginTransform(startTransform);
 
-    setZoomed(true);
+    flushSync(() => {
+      setTransform(startTransform);
+      setZoomed(true);
+    });
+    // 通过transition控制动画
+    const endTransform = `translate(50vw, 50vh) translate(-50%, -50%) scale(1, 1)`;
+    // NOTE:同步执行js代码，是不会有动画的。orgin → end 这一变化被当作一次性完成，没有触发动画。
+    setTimeout(() => {
+      preTransfromRef.current = startTransform;
+      setTransform(endTransform);
+    }, 50);
+    /*  flushSync(() => {}); */
   };
 
   const handleClose = () => {
-    // TODO:动画关闭效果
-    setZoomed(false);
+    // 动画关闭效果
+    setTransform(preTransfromRef.current);
+    setTimeout(() => {
+      setZoomed(false);
+    }, ANIMATION_TIME * 1000);
   };
 
   const handleZoomImgClick = (e) => {
@@ -69,8 +88,9 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ src, alt, width }) => {
             className={style.zoomedImage}
             ref={zoomedRef}
             style={{
-              transform: originTransform,
-              animation: `${style.scaleUp} 0.3s ease forwards`,
+              transform: transform,
+              transition: `transform ${ANIMATION_TIME}s ease`,
+              // animation: `${style.scaleUp} 0.3s ease forwards`,
             }}
           />
         </div>
