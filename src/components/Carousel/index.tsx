@@ -13,14 +13,20 @@ interface CarouselProps {
   children: React.ReactNode[];
   autoPlay?: boolean;
   interval?: number;
+  width: number;
+  defaultAnimationTime: number;
 }
 
 const Carousel: React.FC<CarouselProps> = ({
   children,
   autoPlay = true,
   interval = 3000,
+  width = 50,
+  defaultAnimationTime = 1,
 }) => {
+  const [innerAutoPlay, setInnerAutoPaly] = useState<boolean>(autoPlay);
   const [currentIndex, setCurrentIndex] = useState(1); // 初始显示第一张（实际是第2个元素）
+  const currentIndexRef = useRef<number>(currentIndex);
   const [isAnimating, setIsAnimating] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
   const total = children.length;
@@ -40,8 +46,14 @@ const Carousel: React.FC<CarouselProps> = ({
     setCurrentIndex(index);
   };
 
-  const pre = debounce(() => goToSlide(currentIndex - 1), 100);
-  const next = debounce(() => goToSlide(currentIndex + 1), 100);
+  const pre = debounce(() => {
+    setInnerAutoPaly(false);
+    goToSlide(currentIndex - 1);
+  }, 100);
+  const next = debounce(() => {
+    setInnerAutoPaly(false);
+    goToSlide(currentIndex + 1);
+  }, 100);
 
   // 动画结束处理（实现无缝跳转）
   const handleTransitionEnd = () => {
@@ -53,14 +65,34 @@ const Carousel: React.FC<CarouselProps> = ({
     }
   };
 
-  // 自动轮播
+  /*   // 自动轮播
   useEffect(() => {
-    if (!autoPlay) return;
+    // FIXME:自动播放不正确。如何保证自动播放和按钮控制不冲突
+    if (!innerAutoPlay) return;
     const timer = setInterval(() => {
-      goToSlide(currentIndex + 1);
-    }, interval);
+      goToSlide(currentIndexRef.current + 1);
+    }, defaultAnimationTime * 1000 + 1000);
     return () => clearInterval(timer);
-  }, [currentIndex, autoPlay]);
+  }, [currentIndex, innerAutoPlay]); */
+
+  useEffect(() => {
+    currentIndexRef.current = currentIndex; // 始终保持最新值
+  }, [currentIndex]);
+
+  useEffect(() => {
+    let timeoutId;
+    if (innerAutoPlay) {
+      function tick() {
+        setCurrentIndex((prev) => {
+          goToSlide(prev + 1);
+          return prev + 1;
+        });
+        timeoutId = setTimeout(tick, defaultAnimationTime * 1000 + 50); // 每次设置新的定时器
+      }
+      tick(); // 启动
+    }
+    return () => clearTimeout(timeoutId); // 清理
+  }, [innerAutoPlay]);
 
   return (
     <div className={styles.carousel}>
@@ -69,13 +101,19 @@ const Carousel: React.FC<CarouselProps> = ({
           className={styles.track}
           ref={trackRef}
           style={{
-            transform: `translateX(-${currentIndex * 100}%)`,
-            transition: isAnimating ? "transform 0.5s ease" : "none",
+            transform: `translateX(-${currentIndex * width}%)`,
+            transition: isAnimating
+              ? `transform ${defaultAnimationTime}s linear`
+              : "none",
           }}
           onTransitionEnd={handleTransitionEnd}
         >
           {slides.map((slide, i) => (
-            <div className={styles.slide} key={i}>
+            <div
+              className={styles.slide}
+              style={{ flexBasis: `${width}%` }}
+              key={i}
+            >
               {slide}
             </div>
           ))}
@@ -89,4 +127,42 @@ const Carousel: React.FC<CarouselProps> = ({
   );
 };
 
+const AnimationCarousel = ({ items, animationTime }) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!contentRef.current) return;
+    const rect = contentRef.current.getBoundingClientRect();
+    /* let width = rect.width; */
+    contentRef.current.style.animation = `${styles.marquee} ${animationTime}s linear infinite`;
+   /*  contentRef.current.style.width = `${width / 2}px`; */
+
+    return () => {
+      if (!contentRef.current) return;
+     /*  const rect = contentRef.current.getBoundingClientRect();
+      let width = rect.width;
+      contentRef.current.style.width = `${width * 2}px`; */
+    };
+  }, []);
+  return (
+    <div className={styles.scrollContainer}>
+      <div className={styles.scrollContent} ref={contentRef}>
+        {items.map((item) => {
+          return (
+            <div className={styles.item} style={{ width: `${item.width}px` }}>
+              {item.element}
+            </div>
+          );
+        })}
+        {items.map((item) => {
+          return (
+            <div className={styles.item}  style={{ width: `${item.width}px` }}>
+              {item.element}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+export { AnimationCarousel };
 export default Carousel;

@@ -22,6 +22,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ src, alt, width }) => {
   const [zoomed, setZoomed] = useState(false);
   const [transform, setTransform] = useState("");
   const preTransfromRef = useRef("");
+
   const imageRef = useRef<HTMLImageElement>(null);
   const zoomedRef = useRef<HTMLImageElement>(null);
 
@@ -30,7 +31,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ src, alt, width }) => {
 
     const rect = imageRef.current.getBoundingClientRect();
 
-    // 计算thumbnail相比于原图的缩放比率
+    // 计算thumbnail相比于原图的缩放比率。FIXME:当图片过小的时候，放大后的尺寸不一定为window.innerHeight*0.9
     let scale;
     if (window.innerWidth > window.innerHeight) {
       scale = rect.height / (window.innerHeight * 0.9);
@@ -52,6 +53,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ src, alt, width }) => {
     // NOTE:同步执行js代码，是不会有动画的。orgin → end 这一变化被当作一次性完成，没有触发动画。
     setTimeout(() => {
       preTransfromRef.current = startTransform;
+
       setTransform(endTransform);
     }, 50);
     /*  flushSync(() => {}); */

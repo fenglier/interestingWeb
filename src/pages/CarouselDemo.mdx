@@ -1,4 +1,4 @@
-import Carousel from "../components/Carousel";
+import Carousel, { AnimationCarousel } from "../components/Carousel";
 import img1 from "../assets/1.jpg";
 import img2 from "../assets/2.jpg";
 import img3 from "../assets/3.jpg";
@@ -7,7 +7,7 @@ import img3 from "../assets/3.jpg";
 
 这是一个简单的轮播图组件，用于展示多个项目。它支持自动轮播、左右切换等功能。
 
-<div >
+<div>
   采用“克隆首尾元素 + translateX + transition” 的方式
   <h2>核心思路</h2>
   <ol>
@@ -34,8 +34,8 @@ import img3 from "../assets/3.jpg";
 
 ## 🎬 效果展示
 
-<div style={{ height: "30rem", width: "100%" }}>
-  <Carousel autoPlay={false}>
+<div style={{ height: "10rem", width: "100%" }}>
+  <Carousel autoPlay={false} width={100} defaultAnimationTime={3}>
     <img
       src={img1}
       style={{ height: "100%", width: "100%", objectFit: "cover" }}
@@ -49,6 +49,41 @@ import img3 from "../assets/3.jpg";
       style={{ height: "100%", width: "100%", objectFit: "cover" }}
     />
   </Carousel>
+</div>
+<div  style={{ width: "100%" }}>
+  <AnimationCarousel
+    animationTime={10}
+    items={[
+      {
+        width: "400",
+        element: (
+          <img
+            src={img1}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+        ),
+      },
+      {
+        width: "400",
+        element: (
+          <img
+            src={img2}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+        ),
+      },
+      {
+        width: "400",
+        element: (
+          <img
+            src={img3}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+        ),
+      }
+    ]}
+  >
+  </AnimationCarousel>
 </div>
 ---
 

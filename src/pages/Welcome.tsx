@@ -604,10 +604,32 @@ const ScreenshotDemo = () => {
       >
         <div className="loader"></div>
       </div>
+      <div style={{ width: "100%", overflow: "hidden" }}>
+        <div
+          className="BFC"
+          style={{
+            display: "flex",
+            width: '99%',
+            height: "5rem",
+            alignItems: "center",
+            overflow: "hidden",
+          }}
+        >
+          <div style={{ width: 500, flex: "0 0 auto", backgroundColor: "red" }}>
+            1
+          </div>
+          <div
+            style={{ width: 500, flex: "0 0 auto", backgroundColor: "green" }}
+          >
+            2
+          </div>
+          <div style={{ width: 500, flex: "0 0 auto", backgroundColor: "red" }}>
+            3
+          </div>
+        </div>
+      </div>
     </>
   );
 };
 
 export default ScreenshotDemo;
-
-
