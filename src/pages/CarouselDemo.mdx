@@ -34,7 +34,7 @@ import img3 from "../assets/3.jpg";
 
 ## 🎬 效果展示
 
-<div style={{ height: "10rem", width: "100%" }}>
+<div style={{ height: "20rem", width: "100%" }}>
   <Carousel autoPlay={false} width={100} defaultAnimationTime={3}>
     <img
       src={img1}
@@ -52,7 +52,7 @@ import img3 from "../assets/3.jpg";
 </div>
 <div  style={{ width: "100%" }}>
   <AnimationCarousel
-    animationTime={10}
+    animationTime={20}
     items={[
       {
         width: "400",
@@ -90,18 +90,55 @@ import img3 from "../assets/3.jpg";
 ## 💡 使用方法
 
 ```tsx
-<Carousel autoPlay={false}>
-  <img
-    src={img1}
-    style={{ height: "100%", width: "100%", objectFit: "cover" }}
-  />
-  <img
-    src={img2}
-    style={{ height: "100%", width: "100%", objectFit: "cover" }}
-  />
-  <img
-    src={img3}
-    style={{ height: "100%", width: "100%", objectFit: "cover" }}
-  />
-</Carousel>
+<div style={{ height: 20rem", width: "100%" }}>
+  <Carousel autoPlay={false} width={100} defaultAnimationTime={3}>
+    <img
+      src={img1}
+      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+    />
+    <img
+      src={img2}
+      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+    />
+    <img
+      src={img3}
+      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+    />
+  </Carousel>
+</div>
+<div  style={{ width: "100%" }}>
+  <AnimationCarousel
+    animationTime={20}
+    items={[
+      {
+        width: "400",
+        element: (
+          <img
+            src={img1}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+        ),
+      },
+      {
+        width: "400",
+        element: (
+          <img
+            src={img2}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+        ),
+      },
+      {
+        width: "400",
+        element: (
+          <img
+            src={img3}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+        ),
+      }
+    ]}
+  >
+  </AnimationCarousel>
+</div>
 ```

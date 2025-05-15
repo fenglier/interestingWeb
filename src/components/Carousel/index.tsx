@@ -131,31 +131,16 @@ const AnimationCarousel = ({ items, animationTime }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!contentRef.current) return;
-    const rect = contentRef.current.getBoundingClientRect();
-    /* let width = rect.width; */
     contentRef.current.style.animation = `${styles.marquee} ${animationTime}s linear infinite`;
-   /*  contentRef.current.style.width = `${width / 2}px`; */
-
-    return () => {
-      if (!contentRef.current) return;
-     /*  const rect = contentRef.current.getBoundingClientRect();
-      let width = rect.width;
-      contentRef.current.style.width = `${width * 2}px`; */
-    };
   }, []);
+
+  const renderItems = [...items, ...items];
   return (
     <div className={styles.scrollContainer}>
       <div className={styles.scrollContent} ref={contentRef}>
-        {items.map((item) => {
+        {renderItems.map((item) => {
           return (
             <div className={styles.item} style={{ width: `${item.width}px` }}>
-              {item.element}
-            </div>
-          );
-        })}
-        {items.map((item) => {
-          return (
-            <div className={styles.item}  style={{ width: `${item.width}px` }}>
               {item.element}
             </div>
           );

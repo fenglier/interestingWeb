@@ -71,6 +71,9 @@
   /*   width: 200px; */
   text-align: center;
 }
+.item:hover{
+   opacity: 0.8;
+}
 
 @keyframes marquee {
   0% {

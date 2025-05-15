@@ -14,6 +14,7 @@ import Mode from "../components/mode/index.tsx";
 import logo from "../assets/logo.png";
 import RouterSearch from "./RouterSearch/index.tsx";
 import { debounce } from "lodash";
+import { display } from "html2canvas/dist/types/css/property-descriptors/display";
 
 enum screen_size {
   phone = 0,
@@ -173,6 +174,7 @@ const Layout = () => {
       <main
         className={style.main}
         style={
+      
           size == screen_size.phone
             ? { marginLeft: "0rem" }
             : { marginLeft: "10rem" }

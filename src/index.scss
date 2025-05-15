@@ -39,3 +39,14 @@ html {
     clip-path: circle(150% at 100% 0%);
   }
 }
+
+/* mdx中代码块渲染 */
+pre {
+  white-space: pre; // 保留格式（不换行）
+  overflow-x: auto; // 横向滚动条只出现在代码块中
+  max-width: 100%; // 防止超出容器
+}
+
+code {
+  white-space: inherit;
+}

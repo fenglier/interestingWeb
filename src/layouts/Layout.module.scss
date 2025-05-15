@@ -101,9 +101,10 @@
 }
 
 .main {
-/*   display: flex; */
+ /*  display: flex; */
   /*   justify-content: center;
   align-items: flex-start; */
+  display: "flow-root";
   padding: 1rem 0rem 0rem 0rem;
   margin-top: 5rem;
   margin-left: 10rem;
