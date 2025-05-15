@@ -1,0 +1,22 @@
+.container {
+  border: 0.1rem solid var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30rem;
+  position: relative;
+  .ball {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+  }
+  .ground {
+    position: absolute;
+    background-color: bisque;
+    height: 10rem;
+    width: 100%;
+    top: 240px;
+  }
+}

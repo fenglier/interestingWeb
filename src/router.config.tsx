@@ -18,6 +18,7 @@ import ShakeDemo from "./pages/ShakeDemo.mdx";
 import PushDemo from "./pages/PushDemo.mdx";
 import PacmanDemo from "./pages/PacmanDemo.mdx";
 import RippleDemo from "./pages/RippleDemo.mdx";
+import BallFreeDownDemo from "./pages/BallFreeDownDemo.mdx";
 
 const routes = [
   {
@@ -93,6 +94,11 @@ const routes = [
         path: "/effects/ripple",
         name: "水波纹",
         element: <RippleDemo />,
+      },
+      {
+        path: "/effects/ball",
+        name: "自由落体",
+        element: <BallFreeDownDemo />,
       },
     ],
   },
