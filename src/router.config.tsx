@@ -6,19 +6,26 @@
  * @lastEditors: fengli
  * @lastEditTime:
  */
+import React from "react";
 import Welcome from "./pages/Welcome";
 
-import CarouselDemo from "./pages/CarouselDemo.mdx";
-import WaterfallDemo from "./pages/WaterfallDemo.mdx";
-import TreeDemo from "./pages/TreeDemo.mdx";
-import StepsDemo from "./pages/StepsDemo.mdx";
-import MessageDemo from "./pages/MessageDemo.mdx";
-import ImagePreviewDemo from "./pages/ImagePreviewDemo.mdx";
-import ShakeDemo from "./pages/ShakeDemo.mdx";
-import PushDemo from "./pages/PushDemo.mdx";
-import PacmanDemo from "./pages/PacmanDemo.mdx";
-import RippleDemo from "./pages/RippleDemo.mdx";
-import BallFreeDownDemo from "./pages/BallFreeDownDemo.mdx";
+const CarouselDemo = React.lazy(() => import("./pages/CarouselDemo.mdx"));
+const WaterfallDemo = React.lazy(() => import("./pages/WaterfallDemo.mdx"));
+const TreeDemo = React.lazy(() => import("./pages/TreeDemo.mdx"));
+const StepsDemo = React.lazy(() => import("./pages/StepsDemo.mdx"));
+const MessageDemo = React.lazy(() => import("./pages/MessageDemo.mdx"));
+const ImagePreviewDemo = React.lazy(
+  () => import("./pages/ImagePreviewDemo.mdx")
+);
+const ShakeDemo = React.lazy(() => import("./pages/ShakeDemo.mdx"));
+const PushDemo = React.lazy(() => import("./pages/PushDemo.mdx"));
+const PacmanDemo = React.lazy(() => import("./pages/PacmanDemo.mdx"));
+const RippleDemo = React.lazy(() => import("./pages/RippleDemo.mdx"));
+const BallFreeDownDemo = React.lazy(
+  () => import("./pages/BallFreeDownDemo.mdx")
+);
+
+const BallBounceDemo = React.lazy(() => import("./pages/BallBounceDemo.mdx"));
 
 const routes = [
   {
@@ -99,6 +106,11 @@ const routes = [
         path: "/effects/ball",
         name: "自由落体",
         element: <BallFreeDownDemo />,
+      },
+      {
+        path: "/effects/ballbounce",
+        name: "小球左右弹跳",
+        element: <BallBounceDemo />,
       },
     ],
   },

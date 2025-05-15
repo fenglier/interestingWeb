@@ -18,7 +18,7 @@ const BallFreeDown = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const ballRef = useRef<HTMLDivElement>(null);
-
+  const groundRef = useRef<HTMLDivElement>(null);
   const startAnimation = () => {
     if (!ballRef.current) return;
 
@@ -68,13 +68,20 @@ const BallFreeDown = () => {
 
   const mouseMoveHandle = (e) => {
     if (isDragging) {
-      if (!ballRef.current || !containerRef.current) return;
+      if (!ballRef.current || !containerRef.current || !groundRef.current)
+        return;
       const rect = ballRef.current.getBoundingClientRect();
       const containerRect = containerRef.current.getBoundingClientRect();
-      const yInContainer =
-        e.clientY - containerRect.top - offsetY - rect.height / 2;
-      y = yInContainer;
-      ballRef.current.style.top = `${yInContainer}px`;
+      const groundRect = groundRef.current?.getBoundingClientRect();
+      if (e.clientY < containerRect.top) {
+        y = 0;
+      } else if (e.clientY + (rect.height / 2 - offsetY) > groundRect.top) {
+      } else {
+        const yInContainer =
+          e.clientY - containerRect.top - offsetY - rect.height / 2;
+        y = yInContainer;
+      }
+      ballRef.current.style.top = `${y}px`;
     }
   };
 
@@ -104,7 +111,7 @@ const BallFreeDown = () => {
           className={style.ball}
           onClick={startAnimation}
         ></div>
-        <div id="ground" className={style.ground}></div>
+        <div id="ground" ref={groundRef} className={style.ground}></div>
       </div>
     </>
   );
