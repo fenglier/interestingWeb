@@ -24,8 +24,8 @@ const RippleDemo = React.lazy(() => import("./pages/RippleDemo.mdx"));
 const BallFreeDownDemo = React.lazy(
   () => import("./pages/BallFreeDownDemo.mdx")
 );
-
 const BallBounceDemo = React.lazy(() => import("./pages/BallBounceDemo.mdx"));
+const InertiaBallDemo = React.lazy(() => import("./pages/InertiaBallDemo.mdx"));
 
 const routes = [
   {
@@ -111,6 +111,11 @@ const routes = [
         path: "/effects/ballbounce",
         name: "小球左右弹跳",
         element: <BallBounceDemo />,
+      },
+      {
+        path: "/effects/inertiaball",
+        name: "惯性拖动",
+        element: <InertiaBallDemo />,
       },
     ],
   },

@@ -73,9 +73,11 @@ const BallFreeDown = () => {
       const rect = ballRef.current.getBoundingClientRect();
       const containerRect = containerRef.current.getBoundingClientRect();
       const groundRect = groundRef.current?.getBoundingClientRect();
-      if (e.clientY < containerRect.top) {
+      if (e.clientY - (rect.height / 2 + offsetY) < containerRect.top) {
         y = 0;
+        isDragging = false;
       } else if (e.clientY + (rect.height / 2 - offsetY) > groundRect.top) {
+        isDragging = false;
       } else {
         const yInContainer =
           e.clientY - containerRect.top - offsetY - rect.height / 2;
