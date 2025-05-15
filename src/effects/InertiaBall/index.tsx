@@ -58,7 +58,7 @@ const InertiaBall = () => {
       }
     }
     currentX += dx;
-    ballRef.current.style.transform = `translateX(${currentX}px)`;
+    ballRef.current.style.transform = `translate(${currentX}px,-50%)`;
     velocity = e.clientX - lastX;
     lastX = e.clientX;
     startX = e.clientX;
@@ -95,7 +95,7 @@ const InertiaBall = () => {
       }
     }
 
-    ballRef.current.style.transform = `translateX(${currentX}px)`;
+    ballRef.current.style.transform = `translate(${currentX}px,-50%)`;
 
     if (Math.abs(velocity) > 0.1) {
       animationFrame = requestAnimationFrame(inertia);
