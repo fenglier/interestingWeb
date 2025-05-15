@@ -5,20 +5,22 @@
  * @lastEditors: fengli
  * @lastEditTime:
  */
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import style from "./index.module.scss";
 const BallFreeDown = () => {
   let isDragging = false;
-  let offsetY;
+  let offsetY: number;
   let y = 0; // 当前高度
   let vy = 0; // 当前速度
   let gravity = 0.5; // 重力加速度
   let bounce = 0.7; // 反弹系数
   let ground = 200; // 地面位置（可调整）
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const ballRef = useRef<HTMLDivElement>(null);
+
   const startAnimation = () => {
-    const ball = document.getElementById("ball");
-    const container = document.getElementById("container");
+    if (!ballRef.current) return;
 
     function animate() {
       vy += gravity; // 加速度叠加速度
@@ -33,9 +35,9 @@ const BallFreeDown = () => {
         if (Math.abs(vy) < 1) return;
       }
 
-      ball.style.top = y + "px";
-
-      /* ball.style.transform = `translateY(${y}px)`; */
+      if (ballRef.current) {
+        ballRef.current.style.top = y + "px";
+      }
 
       requestAnimationFrame(animate);
     }
@@ -49,14 +51,14 @@ const BallFreeDown = () => {
   // 👇 左键拖动小球
   const mouseDownHandle = (e) => {
     if (e.button === 0) {
+      if (!ballRef.current) return;
       // 左键
       isDragging = true;
       vy = 0; // 暂停掉落速度
-      const ball = document.getElementById("ball");
-      const rect = ball.getBoundingClientRect();
+      const rect = ballRef.current.getBoundingClientRect();
       // NOTE: 正表示在圆心下方，负表示在圆心上方
       offsetY = e.clientY - rect.top - rect.height / 2;
-      ball.style.cursor = "grabbing";
+      ballRef.current.style.cursor = "grabbing";
 
       // ✅ 添加全局监听器
       window.addEventListener("mousemove", mouseMoveHandle);
@@ -66,22 +68,21 @@ const BallFreeDown = () => {
 
   const mouseMoveHandle = (e) => {
     if (isDragging) {
-      const ball = document.getElementById("ball");
-      const container = document.getElementById("container");
-      const rect = ball.getBoundingClientRect();
-      const containerRect = container.getBoundingClientRect();
+      if (!ballRef.current || !containerRef.current) return;
+      const rect = ballRef.current.getBoundingClientRect();
+      const containerRect = containerRef.current.getBoundingClientRect();
       const yInContainer =
         e.clientY - containerRect.top - offsetY - rect.height / 2;
       y = yInContainer;
-      ball.style.top = `${yInContainer}px`;
+      ballRef.current.style.top = `${yInContainer}px`;
     }
   };
 
   const mouseUpHandle = (e) => {
     if (e.button === 0) {
+      if (!ballRef.current) return;
       isDragging = false;
-      const ball = document.getElementById("ball");
-      ball.style.cursor = "grab";
+      ballRef.current.style.cursor = "grab";
       vy = 0;
 
       // ✅ 移除全局监听器，避免内存泄漏
@@ -93,8 +94,9 @@ const BallFreeDown = () => {
   };
   return (
     <>
-      <div className={style.container} id="container">
+      <div ref={containerRef} className={style.container} id="container">
         <div
+          ref={ballRef}
           id="ball"
           onMouseMove={mouseMoveHandle}
           onMouseUp={mouseUpHandle}
@@ -102,7 +104,7 @@ const BallFreeDown = () => {
           className={style.ball}
           onClick={startAnimation}
         ></div>
-        {/*         <div id="ground" className={style.ground}></div> */}
+        <div id="ground" className={style.ground}></div>
       </div>
     </>
   );
