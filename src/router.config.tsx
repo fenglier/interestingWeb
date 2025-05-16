@@ -25,7 +25,9 @@ const BallFreeDownDemo = React.lazy(
   () => import("./pages/BallFreeDownDemo.mdx")
 );
 const BallBounceDemo = React.lazy(() => import("./pages/BallBounceDemo.mdx"));
-const InertiaBallDemo = React.lazy(() => import("./pages/InertiaBallDemo.mdx"));
+import InertiaBallDemo from "./pages/InertiaBallDemo.mdx";
+import RubberBallDemo from "./pages/RubberBallDemo.mdx";
+import BallCollisionDemo from "./pages/BallCollisionDemo.mdx";
 
 const routes = [
   {
@@ -116,6 +118,16 @@ const routes = [
         path: "/effects/inertiaball",
         name: "惯性拖动",
         element: <InertiaBallDemo />,
+      },
+      {
+        path: "/effects/rubberball",
+        name: "橡皮筋拉伸",
+        element: <RubberBallDemo />,
+      },
+          {
+        path: "/effects/ballcollision",
+        name: "多球碰撞",
+        element: <BallCollisionDemo />,
       },
     ],
   },

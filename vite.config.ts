@@ -16,6 +16,7 @@ import {
   codeToHtml,
   createHighlighter,
 } from "shiki/bundle/web";
+import remarkGfm from "remark-gfm"; // ✅ 引入 GFM 支持
 
 export default defineConfig(async () => {
   const highlighter = await createHighlighter({
@@ -28,7 +29,7 @@ export default defineConfig(async () => {
       react(),
       ghPages(),
       mdx({
-        remarkPlugins: [],
+        remarkPlugins: [remarkGfm], // ✅ 加入 GFM 插件。支持 GitHub 风格 Markdown 表格语法（GFM）的插件 remark-gfm
         rehypePlugins: [[rehypeShiki, { highlighter }]],
       }),
     ],

@@ -1,0 +1,23 @@
+.container {
+  position: relative;
+  height: 10rem;
+  width: 100%;
+  border: 0.1rem solid var(--color-bg-secondary);
+  .ball {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(to right, #38bdf8, #6366f1);
+    border-radius: 50%;
+    cursor: grab;
+    transition: transform 0.3s cubic-bezier(0.25, 1.5, 0.5, 1); // 弹性回弹
+
+    &:active {
+      cursor: grabbing;
+      transition: none;
+    }
+  }
+}
