@@ -29,6 +29,8 @@ import InertiaBallDemo from "./pages/InertiaBallDemo.mdx";
 import RubberBallDemo from "./pages/RubberBallDemo.mdx";
 import BallCollisionDemo from "./pages/BallCollisionDemo.mdx";
 
+import TrailDemo from "./pages/TrailDemo.mdx";
+
 const routes = [
   {
     path: "/home",
@@ -124,10 +126,15 @@ const routes = [
         name: "橡皮筋拉伸",
         element: <RubberBallDemo />,
       },
-          {
+      {
         path: "/effects/ballcollision",
         name: "多球碰撞",
         element: <BallCollisionDemo />,
+      },
+      {
+        path: "/effects/trail",
+        name: "鼠标尾迹",
+        element: <TrailDemo />,
       },
     ],
   },

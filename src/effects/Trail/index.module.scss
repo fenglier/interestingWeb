@@ -1,0 +1,23 @@
+.container {
+  position: relative;
+  height: 10rem;
+  width: 100%;
+  overflow: hidden;
+  border: 0.1rem solid var(--color-bg-secondary);
+  .trail {
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--color-text);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fadeOut 0.5s forwards;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
