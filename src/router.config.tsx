@@ -28,8 +28,8 @@ const BallBounceDemo = React.lazy(() => import("./pages/BallBounceDemo.mdx"));
 import InertiaBallDemo from "./pages/InertiaBallDemo.mdx";
 import RubberBallDemo from "./pages/RubberBallDemo.mdx";
 import BallCollisionDemo from "./pages/BallCollisionDemo.mdx";
-
 import TrailDemo from "./pages/TrailDemo.mdx";
+import BarrageDemo from "./pages/BarrageDemo.mdx";
 
 const routes = [
   {
@@ -135,6 +135,11 @@ const routes = [
         path: "/effects/trail",
         name: "鼠标尾迹",
         element: <TrailDemo />,
+      },
+      {
+        path: "/effects/barrage",
+        name: "弹幕系统",
+        element: <BarrageDemo />,
       },
     ],
   },

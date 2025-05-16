@@ -31,7 +31,7 @@ const BallBounce = () => {
         vx = -vx; // 反弹
       }
 
-      ball.style.transform = `translateX(${x}px)`;
+      ball.style.transform = `translate(${x}px,-50%)`;
       requestAnimationFrame(animate);
     };
 
