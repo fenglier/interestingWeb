@@ -1,4 +1,4 @@
-import{j as s}from"./index-DOOx2OwK.js";import{M as o,a as r}from"./index-CkV1qzsp.js";const c=()=>s.jsxs(s.Fragment,{children:[s.jsx(o,{}),s.jsx(r,{count:99})]});function e(n){const l={blockquote:"blockquote",code:"code",h1:"h1",h2:"h2",li:"li",ol:"ol",p:"p",pre:"pre",span:"span",...n.components};return s.jsxs(s.Fragment,{children:[s.jsx(l.h1,{children:"未读信息 Message"}),`
+import{j as s}from"./index-DSJa858d.js";import{M as o,a as r}from"./index-Ck8K-rIw.js";const c=()=>s.jsxs(s.Fragment,{children:[s.jsx(o,{}),s.jsx(r,{count:99})]});function e(n){const l={blockquote:"blockquote",code:"code",h1:"h1",h2:"h2",li:"li",ol:"ol",p:"p",pre:"pre",span:"span",...n.components};return s.jsxs(s.Fragment,{children:[s.jsx(l.h1,{children:"未读信息 Message"}),`
 `,s.jsx(l.p,{children:"使用伪元素::after ,'position:absolute'和 left、top 实现、"}),`
 `,s.jsx(l.blockquote,{children:`
 `}),`
