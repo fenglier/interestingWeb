@@ -7,6 +7,7 @@
  */
 import React, { useEffect, useRef, useState } from "react";
 import style from "./index.module.scss";
+import BarrageItem from "./BarrageItem";
 
 let idCounter = 0;
 
@@ -81,29 +82,14 @@ const Barrage = () => {
 
       <div className={style.barrageContainer} ref={containerRef}>
         {barrages.map((barrage) => (
-          <div
+          <BarrageItem
             key={barrage.id}
-            className={style.barrage}
-            style={{ top: `${barrage.top}px` }}
-            ref={(el) => handleAnimation(el, barrage.id)}
-            onMouseEnter={(e) => {
-              e.currentTarget._barrageAnim?.pause();
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget._barrageAnim?.play();
-            }}
-          >
-            <span className={style.text}>{barrage.text}</span>
-            <button
-              className={style.likeBtn}
-              onClick={(e) => {
-                e.stopPropagation();
-                alert(`你点赞了：${barrage.text}`);
-              }}
-            >
-              ❤️
-            </button>
-          </div>
+            barrage={barrage}
+            containerRef={containerRef}
+            onOutScreen={(id) =>
+              setBarrages((prev) => prev.filter((b) => b.id !== id))
+            }
+          />
         ))}
       </div>
     </div>
