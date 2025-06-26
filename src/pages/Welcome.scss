@@ -189,7 +189,8 @@
 .item-middle {
   background-color: var(--color-bg);
   height: 200px;
-  flex-grow: 1;
+
+  flex:auto
 }
 .item-right {
   background-color: var(--color-primary);

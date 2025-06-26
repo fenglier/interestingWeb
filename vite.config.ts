@@ -9,6 +9,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { ghPages } from "vite-plugin-gh-pages";
 import mdx from "@mdx-js/rollup";
+import { imagetools } from "vite-imagetools";
 import * as shiki from "shiki";
 import {
   BundledLanguage,
@@ -27,6 +28,7 @@ export default defineConfig(async () => {
   return {
     plugins: [
       react(),
+      imagetools(),
       ghPages(),
       mdx({
         remarkPlugins: [remarkGfm], // ✅ 加入 GFM 插件。支持 GitHub 风格 Markdown 表格语法（GFM）的插件 remark-gfm

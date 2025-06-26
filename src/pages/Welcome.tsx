@@ -131,9 +131,21 @@ const useAnimation = (initialValue: boolean): [boolean, () => void] => {
   return [show, toggle];
 };
 
+const useTime = (initialTime: number) => {
+  const [time, setTime] = useState(initialTime);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  return time;
+};
+
 const ScreenshotDemo = () => {
   const [show, toggle] = useAnimation(true);
   const [setFirstVisit] = useUserGuide(false);
+  const time = useTime(10); // 初始化时间为60秒
   // 用 useCallback 包一层，防止每次渲染重新生成
   const debounceClick = useCallback(debounce(handleClickDebounce, 2000), []);
   const throttleClick = useCallback(throttle(handleClickThrottle, 2000), []);
@@ -173,12 +185,14 @@ const ScreenshotDemo = () => {
 
   const handleImmidiateUpdate = () => {
     flushSync(() => {
-      setCount((prev) => prev + 1);
+      /* setCount((prev) => prev + 1); */
+      setCount(count + 1);
     });
 
     requestAnimationFrame(() => {
       flushSync(() => {
-        setCount((prev) => prev + 1);
+        /*       setCount((prev) => prev + 1); */
+        setCount(count + 1);
       });
     });
 
@@ -449,6 +463,10 @@ const ScreenshotDemo = () => {
         {/* 子组件的 props 没变，所以不会重新渲染 */}
         <Child label="静态内容" />
       </div>
+      <div className="theme">每隔1s减1，从10开始</div>
+      <div className="BFC">
+        <span>{time}</span>
+      </div>
       <div className="theme">使用Masonry,left top实现瀑布流</div>
       <div className="BFC">
         <Masonry />
@@ -609,7 +627,7 @@ const ScreenshotDemo = () => {
           className="BFC"
           style={{
             display: "flex",
-            width: '99%',
+            width: "99%",
             height: "5rem",
             alignItems: "center",
             overflow: "hidden",

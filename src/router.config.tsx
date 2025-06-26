@@ -30,6 +30,7 @@ import RubberBallDemo from "./pages/RubberBallDemo.mdx";
 import BallCollisionDemo from "./pages/BallCollisionDemo.mdx";
 import TrailDemo from "./pages/TrailDemo.mdx";
 import BarrageDemo from "./pages/BarrageDemo.mdx";
+import DragOrderDemo from "./pages/DragOrderDemo.mdx";
 
 const routes = [
   {
@@ -140,6 +141,11 @@ const routes = [
         path: "/effects/barrage",
         name: "弹幕系统",
         element: <BarrageDemo />,
+      },
+      {
+        path: "/effects/dragorder",
+        name: "拖拽排序",
+        element: <DragOrderDemo />,
       },
     ],
   },

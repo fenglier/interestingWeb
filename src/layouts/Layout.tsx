@@ -11,7 +11,7 @@ import style from "./Layout.module.scss";
 import { useEffect, useState } from "react";
 import routes from "../router.config.tsx";
 import Mode from "../components/mode/index.tsx";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.png?w=100;200&format=webp;png&quality=80&as=picture";
 import RouterSearch from "./RouterSearch/index.tsx";
 import { debounce } from "lodash";
 import { display } from "html2canvas/dist/types/css/property-descriptors/display";
@@ -57,6 +57,7 @@ const Layout = () => {
     if (top) setActiveTop(top.key);
   }, [location.pathname]);
 
+  console.log("---logo--", logo);
   const topNav = (
     <>
       {routes.map((r) => {
@@ -109,7 +110,20 @@ const Layout = () => {
             </span>
           ) : null}
           <a onClick={() => navigate("/")}>
-            <img src={logo} draggable="false" alt="logo" />
+            {/*   <img src={logo} draggable="false" alt="logo" /> */}
+            <picture>
+              {Object.values(logo.sources).map((source) => (
+                <source key={source.srcset} {...source} />
+              ))}
+              <img
+                src={logo.img.src}
+                width={logo.img.width}
+                height={logo.img.height}
+                alt="网站 Logo"
+                loading="eager"
+              />
+            </picture>
+
             <span className={style.name}>InterestingWeb</span>
           </a>
         </span>
@@ -174,7 +188,6 @@ const Layout = () => {
       <main
         className={style.main}
         style={
-      
           size == screen_size.phone
             ? { marginLeft: "0rem" }
             : { marginLeft: "10rem" }
