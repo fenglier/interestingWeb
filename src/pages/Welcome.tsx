@@ -142,7 +142,7 @@ const useTime = (initialTime: number) => {
   return time;
 };
 
-const ScreenshotDemo = () => {
+const Welcome = () => {
   const [show, toggle] = useAnimation(true);
   const [setFirstVisit] = useUserGuide(false);
   const time = useTime(10); // 初始化时间为60秒
@@ -213,8 +213,28 @@ const ScreenshotDemo = () => {
     //inputRef.current.focus(); // 调用DOM元素的focus方法
   }, []); // 空依赖数组，表示组件挂载完成后执行一次
 
+  const [te, setTe] = useState({ count: 0 });
+
+  const cl = () => {
+    setTe((prevState) => {
+      if (prevState === prevState) {
+        console.log(true);
+      } else {
+        console.log(false);
+      }
+      prevState.count++;
+      return prevState;
+    });
+    console.log(te);
+  };
   return (
     <>
+      <div className="theme">使用driver.js实现用户引导</div>
+      <div className="BFC3">
+        <button className="btn" onClick={cl}>
+          +1
+        </button>
+      </div>
       <div className="theme">使用driver.js实现用户引导</div>
       <div className="BFC3">
         <button className="btn" onClick={setFirstVisit}>
@@ -650,4 +670,4 @@ const ScreenshotDemo = () => {
   );
 };
 
-export default ScreenshotDemo;
+export default Welcome;

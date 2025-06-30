@@ -1,46 +1,66 @@
-.bottomMenu {
+.container {
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
   padding: 8px 16px;
   background: var(--color-primary);
   box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
   border-radius: 12px 12px 0 0;
   user-select: none;
   z-index: 1000;
-}
-
-.menuItem {
-  padding: 10px 16px;
-  margin: 0 6px;
-  background: var(--color-secondary);
-  border-radius: 8px;
-  cursor: grab;
-  transition: all 0.2s ease;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
+  width: 400px;
+  box-sizing: border-box;
+  .bottomMenu {
+    /*     position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    padding: 8px 16px;
+    background: var(--color-primary);
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 12px 12px 0 0;
+    user-select: none;
+    z-index: 1000; */
+    /*   display: inline-block; */
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .label {
-    font-size: 12px;
-    margin-top: 4px;
-    opacity: 0;
-    transform: translateY(4px);
-    transition: all 0.3s ease;
-    white-space: nowrap;
+  .menuItem {
+    box-sizing: border-box;
+    padding: 10px 16px;
+    margin: 0 6px;
+    background: var(--color-secondary);
+    border-radius: 8px;
+    cursor: grab;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    display: inline-block;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    width: 60px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+
+    .label {
+      font-size: 12px;
+      margin-top: 4px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
   }
 
-  &:hover {
+  .menuItemHover {
     transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     background-color: var(--color-success);
@@ -54,8 +74,8 @@
       transform: translateY(0);
     }
   }
-}
 
-.dragging {
-  opacity: 0.5;
+  .dragging {
+    opacity: 0.5;
+  }
 }
