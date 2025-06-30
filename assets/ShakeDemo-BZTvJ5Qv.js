@@ -1,4 +1,4 @@
-import{j as s}from"./index-C2NBSzep.js";import{M as r}from"./index-BQ7Ar6uV.js";const o="_shakeContainer_1xuh7_1",c={shakeContainer:o},t=({children:n})=>s.jsx("div",{className:c.shakeContainer,children:n}),a=()=>s.jsx(t,{children:s.jsx(r,{})});function e(n){const l={blockquote:"blockquote",code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",span:"span",strong:"strong",...n.components};return s.jsxs(s.Fragment,{children:[s.jsx(l.h1,{children:"抖动效果 Shake"}),`
+import{j as s}from"./index-BOwtVn3-.js";import{M as r}from"./index-DGNy13QV.js";const o="_shakeContainer_1xuh7_1",c={shakeContainer:o},t=({children:n})=>s.jsx("div",{className:c.shakeContainer,children:n}),a=()=>s.jsx(t,{children:s.jsx(r,{})});function e(n){const l={blockquote:"blockquote",code:"code",h1:"h1",h2:"h2",p:"p",pre:"pre",span:"span",strong:"strong",...n.components};return s.jsxs(s.Fragment,{children:[s.jsx(l.h1,{children:"抖动效果 Shake"}),`
 `,s.jsxs(l.p,{children:["抖动效果常",s.jsx(l.strong,{children:"引起用户注意或提示错误"}),"，是“负反馈”的常见表现"]}),`
 `,s.jsxs(l.blockquote,{children:[`
 `,s.jsx(l.p,{children:"它是使用translate和transform实现的。"}),`
