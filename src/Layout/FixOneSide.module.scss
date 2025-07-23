@@ -1,0 +1,60 @@
+.BFC5 {
+  display: flex;
+  align-items: flex-start;
+  height: 200px;
+  background-color: var(--color-bg);
+  border: var(--color-border) dashed 1px;
+}
+.fixLeft {
+  width: 20%;
+  height: 100%;
+  background-color: var(--color-primary);
+}
+
+.autoAdapt {
+  height: 100%;
+  flex-grow: 1;
+  background-color: var(--color-secondary);
+}
+
+.BFC6 {
+  background-color: var(--color-bg);
+  border: var(--color-border) dashed 1px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.rightFloat {
+  float: right;
+  height: 200px;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+  width: 200px;
+}
+
+.autoLeft {
+  overflow: hidden;
+  background-color: var(--color-secondary);
+  height: 200px;
+}
+
+.BFC7 {
+  background-color: bisque;
+  border: var(--color-border) dashed 1px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.leftFloat {
+  float: left;
+  height: 200px;
+  width: 150px;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+}
+
+.autoRight {
+  overflow: hidden;
+  background-color: var(--color-secondary);
+  height: 200px;
+}

@@ -2,23 +2,6 @@
   background-color: var(--color-bg-secondary);
 }
 
-.flex {
-  display: flex;
-  /*  height: 30rem; */
-  justify-content: flex-start;
-  align-items: center;
-  align-content: flex-start;
-  /*   background-color: var(--color-bg); */
-  flex-wrap: wrap;
-  gap: 0.5%;
-  border: var(--color-border) dashed 1px;
-}
-.item {
-  width: 33%;
-  aspect-ratio: 1 / 1;
-  border: var(--color-border) dashed 1px;
-  background-color: var(--color-bg-primary);
-}
 
 .BFC1 {
   margin-top: 0.1rem;
@@ -28,18 +11,7 @@
   border: black dashed 1px;
 }
 
-.left {
-  float: left;
-  background-color: var(--color-bg-secondary);
-  height: 10rem;
-  aspect-ratio: 1 / 1;
-}
-.right {
-  float: right;
-  background-color: var(--color-bg-secondary);
-  height: 10rem;
-  aspect-ratio: 1 / 1;
-}
+
 
 .BFC2 {
   overflow: hidden; /* 或者使用 display: flow-root */
@@ -87,116 +59,9 @@
   width: 19%;
   height: 100px;
 }
-.BFC5 {
-  display: flex;
-  align-items: flex-start;
-  height: 200px;
-  background-color: var(--color-bg);
-  border: var(--color-border) dashed 1px;
-}
-.fix-left {
-  width: 20%;
-  height: 100%;
-  background-color: var(--color-primary);
-}
 
-.auto-adapt {
-  height: 100%;
-  flex-grow: 1;
-  background-color: var(--color-secondary);
-}
 
-.BFC6 {
-  background-color: var(--color-bg);
-  border: var(--color-border) dashed 1px;
-  width: 100%;
-  overflow: hidden;
-}
 
-.right-float {
-  float: right;
-  height: 200px;
-  color: var(--color-text);
-  background-color: var(--color-primary);
-  width: 200px;
-}
-
-.auto-left {
-  overflow: hidden;
-  background-color: var(--color-secondary);
-  height: 200px;
-}
-
-.BFC7 {
-  background-color: bisque;
-  border: var(--color-border) dashed 1px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.left-float {
-  float: left;
-  height: 200px;
-  width: 150px;
-  color: var(--color-text);
-  background-color: var(--color-primary);
-}
-
-.auto-right {
-  overflow: hidden;
-  background-color: var(--color-secondary);
-  height: 200px;
-}
-
-.BFC8 {
-  background-color: var(--color-bg);
-  overflow: hidden;
-  border: var(--color-border) dashed 1px;
-}
-
-.left2 {
-  float: left;
-  height: 200px;
-  width: 150px;
-  background-color: var(--color-primary);
-}
-
-.right2 {
-  float: right;
-  height: 200px;
-  width: 150px;
-  background-color: var(--color-primary);
-}
-
-.middle {
-  margin-left: 150px;
-  margin-right: 150px;
-  height: 200px;
-  background-color: var(--color-secondary);
-}
-
-.BFC9 {
-  background-color: var(--color-bg);
-  display: flex;
-  border: var(--color-bg) dashed 1px;
-}
-
-.item-left {
-  background-color: var(--color-primary);
-  height: 200px;
-  width: 150px;
-}
-.item-middle {
-  background-color: var(--color-bg);
-  height: 200px;
-
-  flex:auto
-}
-.item-right {
-  background-color: var(--color-primary);
-  height: 200px;
-  width: 150px;
-}
 
 .BFC10 {
   background-color: var(--color-bg);

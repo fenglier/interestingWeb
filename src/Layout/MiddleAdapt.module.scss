@@ -1,0 +1,49 @@
+.BFC8 {
+  background-color: var(--color-bg);
+  overflow: hidden;
+  border: var(--color-border) dashed 1px;
+}
+
+.left2 {
+  float: left;
+  height: 200px;
+  width: 150px;
+  background-color: var(--color-primary);
+}
+
+.right2 {
+  float: right;
+  height: 200px;
+  width: 150px;
+  background-color: var(--color-primary);
+}
+
+.middle {
+  margin-left: 150px;
+  margin-right: 150px;
+  height: 200px;
+  background-color: var(--color-secondary);
+}
+
+.BFC9 {
+  background-color: var(--color-bg);
+  display: flex;
+  border: var(--color-bg) dashed 1px;
+}
+
+.itemLeft {
+  background-color: var(--color-primary);
+  height: 200px;
+  width: 150px;
+}
+.itemMiddle {
+  background-color: var(--color-secondary);
+  height: 200px;
+
+  flex: auto;
+}
+.itemRight {
+  background-color: var(--color-primary);
+  height: 200px;
+  width: 150px;
+}

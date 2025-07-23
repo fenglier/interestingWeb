@@ -161,8 +161,7 @@ const BottomMenu = () => {
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseup", handleMouseUp);
 
-    // 清理克隆元素
-    menuRef.current?.nextSibling?.remove();
+   
     const children = Array.from(
       menuRef.current?.children || []
     ) as HTMLElement[];
@@ -176,12 +175,15 @@ const BottomMenu = () => {
     setItems(newItems);
     itemsRef.current = newItems; // 更新引用
     setHoverIndex(null); // 清除hover状态
+
+     // 清理克隆元素
+    menuRef.current?.nextSibling?.remove(); 
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.bottomMenu} ref={menuRef}>
-        {itemsRef.current?.map((item, index) => {
+        {items?.map((item, index) => {
           let hoverCss;
           if (dragIndexRef.current) {
             // TODO: 处理拖动时的hover样式

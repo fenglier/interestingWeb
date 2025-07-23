@@ -5,12 +5,12 @@
  * @lastEditors: fengli
  * @lastEditTime: 
  */
-import fs from 'node:fs'
+let count = 0
+setInterval(() => {
+  console.log('count', count)
+}, 1000)
 
-/* fs.readFile('./main.tsx', () => {
-  setTimeout(() => console.log('timeout'), 0);
-  setImmediate(() => console.log('immediate'));
-}); */
-
-setTimeout(() => console.log('timeout'), 0);
-setImmediate(() => console.log('immediate'));
+const add1 = () => {
+  count++
+  console.log('add1')
+}

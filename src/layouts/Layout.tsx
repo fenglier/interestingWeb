@@ -60,22 +60,24 @@ const Layout = () => {
   console.log("---logo--", logo);
   const topNav = (
     <>
-      {routes.map((r) => {
-        return (
-          <div
-            key={r.key}
-            className={`${style.default} ${
-              r.key === activeTop ? style.active : ""
-            }`}
-            onClick={() => {
-              setActiveTop(r.key);
-              navigate(r.children?.[0]?.path || r.path);
-            }}
-          >
-            {r.name}
-          </div>
-        );
-      })}
+      {routes
+        .filter((r) => r.hidden != true)
+        .map((r) => {
+          return (
+            <div
+              key={r.key}
+              className={`${style.default} ${
+                r.key === activeTop ? style.active : ""
+              }`}
+              onClick={() => {
+                setActiveTop(r.key);
+                navigate(r.children?.[0]?.path || r.path);
+              }}
+            >
+              {r.name}
+            </div>
+          );
+        })}
     </>
   );
   const sideNav = (

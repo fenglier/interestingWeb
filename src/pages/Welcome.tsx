@@ -241,25 +241,7 @@ const Welcome = () => {
           第一次访问本网站
         </button>
       </div>
-      <div className="theme" id="nineLayout">
-        九宫格布局
-      </div>
-      <div className="flex" id="implement">
-        <div className="item">1</div>
-        <div className="item">2</div>
-        <div className="item">3</div>
-        <div className="item">4</div>
-        <div className="item">5</div>
-        <div className="item">6</div>
-        <div className="item">7</div>
-        <div className="item">8</div>
-        {/*  <div className="item">9</div> */}
-      </div>
-      <div className="theme">float实现两段对齐</div>
-      <div className="BFC1">
-        <div className="left">logo</div>
-        <div className="right">menu</div>
-      </div>
+
       <div className="theme">BFC里面子元素margin重叠</div>
       <div className="BFC2">
         <div className="box1"></div>
@@ -292,33 +274,8 @@ const Welcome = () => {
       <div>
         <button onClick={fakeArray}>点击</button>
       </div>
-      <div className="theme">左侧固定，右侧自适应（flex实现）</div>
-      <div className="BFC5">
-        <div className="fix-left">左侧固定</div>
-        <div className="auto-adapt">右侧自适应</div>
-      </div>
-      <div className="theme">右侧固定，左侧自适应（float实现）</div>
-      <div className="BFC6">
-        <div className="right-float">右侧固定</div>
-        <div className="auto-left">左侧自适应</div>
-      </div>
-      <div className="theme">左侧固定，右侧自适应（float实现）</div>
-      <div className="BFC7">
-        <div className="left-float">左侧固定</div>
-        <div className="auto-right">右侧自适应</div>
-      </div>
-      <div className="theme">左侧固定，右侧固定，中间自适应（float实现）</div>
-      <div className="BFC8">
-        <div className="left2">左侧固定</div>
-        <div className="right2">右侧固定</div>
-        <div className="middle">中间自适应</div>
-      </div>
-      <div className="theme">左侧固定，右侧固定，中间自适应（flex实现）</div>
-      <div className="BFC9">
-        <div className="item-left">左侧固定</div>
-        <div className="item-middle">中间自适应</div>
-        <div className="item-right">右侧固定</div>
-      </div>
+    
+    
       <div className="theme">
         浮动脱离文本流和position：absolute脱离文本流的区别
       </div>

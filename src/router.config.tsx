@@ -32,6 +32,11 @@ import TrailDemo from "./pages/TrailDemo.mdx";
 import BarrageDemo from "./pages/BarrageDemo.mdx";
 import DragOrderDemo from "./pages/DragOrderDemo.mdx";
 
+import NineLayout from "./Layout/NineLayout.tsx";
+import Justify from "./Layout/Justify.tsx";
+import FixOneSide from "./Layout/FixOneSide.tsx";
+import MiddleAdapt from "./Layout/MiddleAdapt.tsx";
+
 const routes = [
   {
     path: "/home",
@@ -42,6 +47,34 @@ const routes = [
         path: "/home/welcome",
         name: "Welcome",
         element: <Welcome />,
+      },
+    ],
+    hidden: true, // 不显示该菜单
+  },
+  {
+    path: "/layout",
+    name: "布局",
+    key: "/layout",
+    children: [
+      {
+        path: "/layout/nine",
+        name: "NineLayout 九宫格布局",
+        element: <NineLayout />,
+      },
+      {
+        path: "/layout/justify",
+        name: "Justify 两端对齐",
+        element: <Justify />,
+      },
+      {
+        path: "/layout/fixOneSide",
+        name: "FixOneSide 一侧固定",
+        element: <FixOneSide />,
+      },
+      {
+        path: "/layout/middleAdapt",
+        name: "MiddleAdapt 中间自适应",
+        element: <MiddleAdapt />,
       },
     ],
   },
