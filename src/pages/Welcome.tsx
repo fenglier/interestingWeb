@@ -215,6 +215,8 @@ const Welcome = () => {
 
   const [te, setTe] = useState({ count: 0 });
 
+
+
   const cl = () => {
     setTe((prevState) => {
       if (prevState === prevState) {
@@ -274,8 +276,7 @@ const Welcome = () => {
       <div>
         <button onClick={fakeArray}>点击</button>
       </div>
-    
-    
+
       <div className="theme">
         浮动脱离文本流和position：absolute脱离文本流的区别
       </div>
@@ -587,18 +588,7 @@ const Welcome = () => {
         CSS 实现 Loading 动画（转圈），使用到的关键属性有
         border-top、border-radius: 50%; animation
       </div>
-      <div
-        className="BFC"
-        style={{
-          display: "flex",
-          width: "100%",
-          height: "5rem",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <div className="loader"></div>
-      </div>
+
       <div style={{ width: "100%", overflow: "hidden" }}>
         <div
           className="BFC"

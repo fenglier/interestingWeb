@@ -307,19 +307,7 @@
   box-shadow: var(--shadow-md) 0 2px 4px rgba(0, 0, 0, 0.2); /* 阴影变浅 */
 }
 
-.loader {
-  width: 40px;
-  height: 40px;
-  border: 4px solid #ccc;
-  border-top: 4px solid #4caf50;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 
 

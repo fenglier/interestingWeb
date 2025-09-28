@@ -5,6 +5,8 @@ import Card from "./Card";
 import debounce from "lodash/debounce";
 import { rafThrottle } from "../../tool";
 
+let count = 0;
+
 interface CardType {
   auhtor: string;
   title: string;
@@ -52,9 +54,10 @@ const getLeftRightPaddingByWidth = (width: number) => {
   return 24;
 };
 
-
-
-const useContainer = (getData: { (page: number): Promise<CardType[]>; (arg0: number): any; }) => {
+const useContainer = (getData: {
+  (page: number): Promise<CardType[]>;
+  (arg0: number): any;
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const columns = useRef(getColumnsByWidth(window.innerWidth));
   const gap = useRef(getGapByWidth(window.innerWidth));
@@ -238,7 +241,7 @@ const useContainer = (getData: { (page: number): Promise<CardType[]>; (arg0: num
   }, [containerWidth, cards]);
 
   // 一个card一个card的移动到相应的位置
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!containerRef.current) return;
     if (containerWidth <= 0) return;
     const children = containerRef.current?.children;
@@ -256,6 +259,7 @@ const useContainer = (getData: { (page: number): Promise<CardType[]>; (arg0: num
       columnHeights.current = [...tempColumnHeight];
     }
   }, [initCardPositions]);
+
   return [cards, containerRef, cardPositions, handleScroll] as [
     typeof cards,
     React.RefObject<HTMLDivElement>,
@@ -264,8 +268,6 @@ const useContainer = (getData: { (page: number): Promise<CardType[]>; (arg0: num
   ];
 };
 
-
-
 interface MasonryProps {
   getData: (page: number) => Promise<CardType[]>;
 }
@@ -273,6 +275,11 @@ interface MasonryProps {
 const Masonry = ({ getData }: MasonryProps) => {
   const [cards, containerRef, cardPositions, handleScroll] =
     useContainer(getData);
+  // 人为地减慢了渲染
+  let now = performance.now();
+  while (performance.now() - now < 100) {
+    // 不做任何事情...
+  }
   return (
     <>
       <svg style={{ display: "none" }}>

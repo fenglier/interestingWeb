@@ -8,6 +8,7 @@
  */
 import React from "react";
 import Welcome from "./pages/Welcome";
+import Test from './pages/Test'
 
 const CarouselDemo = React.lazy(() => import("./pages/CarouselDemo.mdx"));
 const WaterfallDemo = React.lazy(() => import("./pages/WaterfallDemo.mdx"));
@@ -37,6 +38,8 @@ import Justify from "./Layout/Justify.tsx";
 import FixOneSide from "./Layout/FixOneSide.tsx";
 import MiddleAdapt from "./Layout/MiddleAdapt.tsx";
 
+import Loader from "./effects/Loader/index.tsx";
+
 const routes = [
   {
     path: "/home",
@@ -48,6 +51,11 @@ const routes = [
         name: "Welcome",
         element: <Welcome />,
       },
+      {
+        path:'/home/test',
+        name:'测试',
+        element:<Test/>
+      }
     ],
     hidden: true, // 不显示该菜单
   },
@@ -179,6 +187,11 @@ const routes = [
         path: "/effects/dragorder",
         name: "拖拽排序",
         element: <DragOrderDemo />,
+      },
+      {
+        path: "/effects/loader",
+        name: "加载动画",
+        element: <Loader />,
       },
     ],
   },
